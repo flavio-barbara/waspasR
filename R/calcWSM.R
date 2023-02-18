@@ -30,9 +30,6 @@ calcWSM <- function(AxCNorm, vWeights) {
   # WSM Calculation loop
   Points = rep(0,nrow(workingMatrix))
   Alternatives <- 1:nrow(workingMatrix)
-
-  browser()
-
   AxC_WSM <- cbind(Alternatives, Points)
   for(iCol in 1:ncol(workingMatrix)){
     for(iRow in 1:nrow(workingMatrix)){
