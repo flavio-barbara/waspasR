@@ -1,0 +1,6 @@
+export(applyLambda)
+export(calcWPM)
+export(calcWSM)
+export(normalize)
+export(sliceData)
+export(waspasR)
