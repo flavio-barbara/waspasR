@@ -20,8 +20,9 @@
 #' @examples
 #' normalize(myAllInOneMatrix)
 #' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")
-#' @export
 #'
+#' @export
+
 #' #################### Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
 
 normalize <- function(dfMatrix, vCostBenefit, dataFormat = "all-in-one") {
