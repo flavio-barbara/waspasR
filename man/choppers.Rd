@@ -11,14 +11,14 @@ An object of class \code{"data.frame"}
  These data are in the first column, from row 4 to the last.}
  \item{criteria}{set of criteria that a helicopter buyer may deem relevant for making a
  purchase decision. These data are in the 3rd row, from col 2 to the last.}
- \item{weights}{Arbitrated by the decision maker, they relativize the value of the
- criteria in percentage terms, thus making a weighting of these criteria.
- These data are in the 2nd row, from col 2 to the last.}
+ \item{weights}{Arbitrated by the decision maker, they attribute different
+    relative importance to the values of the criteria in percentage terms,
+    thus making a weighting of these criteria.}
  \item{flags}{They determine whether the specific criterion is cost, that is,
  the smaller, the better, or benefit, the greater the better.
  These data are in the 1st row, from col 2 to the last.}
  \item{values}{Randomly generated value, within a range that makes sense
- These data are in the 5th row, from col 2 to the last.}
+ These data are in the fourth row, from col 2 to the last.}
  }
 }
 \usage{

@@ -22,7 +22,6 @@ A data frame object that contains 2 columns and the the same number of rows as
 Calculates the ranking for the alternative's set according to WPM method
 }
 \examples{
-Do not just copy and paste!
 
 \dontrun{
 calcWPM(normalized_matrix, vector_weights)

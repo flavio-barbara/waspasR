@@ -15,7 +15,6 @@
 #'         using the input lambda.
 #'
 #' @examples
-#' Do not just copy and paste!
 #'
 #' \dontrun{
 #' applyLambda(WSM_matrix, WPM_matrix, lambda)

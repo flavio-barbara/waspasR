@@ -13,8 +13,8 @@ normalize(dfMatrix, vCostBenefit, dataFormat = "all-in-one")
 Must be same size of Criteria, must contains just strings initiated with B, b, C or c}
 
 \item{dataFormat}{Defines how the functions will deal with the input values. There are two possible values:
-"All-in-One" (wich is the same that the values 1) or "simple"  (wich is the same as 2),
-if ommited the function will assume the All-in-one format.}
+"All-in-One" (which is the same that the values 1) or "simple" (which is the same as 2),
+if omitted the function will assume the All-in-one format.}
 }
 \value{
 A data frame object that contains the input matrix with its values normalized.
@@ -30,7 +30,6 @@ Normalize the values of Alternatives X Criteria matrix according to a given
              and metadata.
 }
 \examples{
-Do not just copy and paste!
 
 \dontrun{
 normalize(myAllInOneMatrix)

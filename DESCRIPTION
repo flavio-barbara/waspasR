@@ -1,6 +1,6 @@
 Package: waspasR
 Type: Package
-Title: Toolset to implement WASPAS Based Multi-criteria decision analysis (MCDA) solutions
+Title: Tool kit to implement WASPAS Based Multi-criteria decision analysis (MCDA) solutions
 Version: 0.1.0
 Authors@R: c(person("Barbara", "Flavio", email = "flavio.barbara@gmail.com", role = c("cre","aut")),
              person("Santos", "Marcos", email = "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb"))

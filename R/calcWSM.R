@@ -11,7 +11,6 @@
 #'        alternative whose id is in the "Alternatives" column.
 #'
 #' @examples
-#' Do not just copy and paste!
 #'
 #' \dontrun{
 #' calcWSM(normalized_matrix, vector_weights)

@@ -13,8 +13,8 @@ waspasR(dfMatrix, lambda)
 Must be same size of Criteria, must contains just strings initiated with B, b, C or c}
 
 \item{dataFormat}{Defines how the functions will deal with the input values. There are two possible values:
-"All-in-One" (wich is the same that the values 1) or "simple"  (wich is the same as 2),
-if ommited the function will assume the All-in-one format.}
+"All-in-One" (which is the same that the values 1) or "simple"  (which is the same as 2),
+if omitted the function will assume the All-in-one format.}
 }
 \value{
 A data frame object that contains the input matrix with its values normalized.
@@ -28,4 +28,11 @@ Normalize the values of Alternatives X Criteria matrix according to a given
              (b) The "Simple" format is a data.frame matrix with just the values of Alternatives x Criteria,
              in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
              and metadata.
+}
+\examples{
+
+\dontrun{
+waspas_set <- waspasR(chopper, lambda = 0.23)
+waspas_set <- waspasR(myRawData, lambda = 0.8)}
+
 }

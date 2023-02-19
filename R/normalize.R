@@ -18,7 +18,6 @@
 #' @return A data frame object that contains the input matrix with its values normalized.
 #'
 #' @examples
-#' Do not just copy and paste!
 #'
 #' \dontrun{
 #' normalize(myAllInOneMatrix)

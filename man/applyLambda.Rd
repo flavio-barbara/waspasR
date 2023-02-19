@@ -27,7 +27,6 @@ Apply the lambda to assign a relative importance to each of the previously
              used methods (WSM and WPM). Lambda values range from zero to one.
 }
 \examples{
-Do not just copy and paste!
 
 \dontrun{
 applyLambda(WSM_matrix, WPM_matrix, lambda)

@@ -15,7 +15,6 @@
 #'  - if outData == "W": A vector of Weights
 #'
 #' @examples
-#' Do not just copy and paste!
 #'
 #' \dontrun{
 #' AlternativesList <- sliceData(dfMatrix, "A")
