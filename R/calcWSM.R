@@ -11,9 +11,11 @@
 #'        alternative whose id is in the "Alternatives" column.
 #'
 #' @examples
-#' calcWSM(normalized_matrix, vector_weights)
-#' wsm_matrix <- calcWSM(row_values_matrix, vector_weights)
+#' Do not just copy and paste!
 #'
+#' \dontrun{
+#' calcWSM(normalized_matrix, vector_weights)
+#' wpm_matrix <- calcWSM(normalized_matrix, vector_weights)}
 #' @export
 
 #################### Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix

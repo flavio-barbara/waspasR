@@ -22,7 +22,9 @@ A data frame object that contains 2 columns and the the same number of rows as
 Calculates the ranking for the alternative's set according to WSM method.
 }
 \examples{
-calcWSM(normalized_matrix, vector_weights)
-wsm_matrix <- calcWSM(row_values_matrix, vector_weights)
+Do not just copy and paste!
 
+\dontrun{
+calcWSM(normalized_matrix, vector_weights)
+wpm_matrix <- calcWSM(normalized_matrix, vector_weights)}
 }

@@ -30,7 +30,10 @@ Normalize the values of Alternatives X Criteria matrix according to a given
              and metadata.
 }
 \examples{
+Do not just copy and paste!
+
+\dontrun{
 normalize(myAllInOneMatrix)
-normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")
+normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")}
 
 }

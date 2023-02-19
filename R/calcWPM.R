@@ -11,9 +11,11 @@
 #'        alternative whose id is in the "Alternatives" column.
 #'
 #' @examples
-#' calcWPM(normalized_matrix, vector_weights)
-#' wpm_matrix <- calcWPM(row_values_matrix, vector_weights)
+#' Do not just copy and paste!
 #'
+#' \dontrun{
+#' calcWPM(normalized_matrix, vector_weights)
+#' wpm_matrix <- calcWPM(normalized_matrix, vector_weights)}
 #' @export
 
 #################### Ranking for WPM Method: AxCNorm Matrix  ==>  AxC_WPM Matrix
@@ -28,7 +30,7 @@ calcWPM <- function(AxCNorm, vWeights) {
     return("Error #06: Values in Vector of Weights must summarize 1!")
   }
   # WPM Calculation loop
-  Points = rep(0,nrow(workingMatrix))
+  Points <- rep(0,nrow(workingMatrix))
   Alternatives <- 1:nrow(workingMatrix)
   AxC_WPM <- cbind(Points, Alternatives)
   for(iCol in 1:ncol(workingMatrix)){

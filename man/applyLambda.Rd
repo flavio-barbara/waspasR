@@ -7,25 +7,33 @@
 applyLambda(WSM_matrix, WPM_matrix, lambda)
 }
 \arguments{
-\item{WSM_matrix}{The data set object obtained from the application of the WSM method (calcWSM function)}
+\item{WSM_matrix}{The data set object obtained from the application of the
+WSM method (calcWSM function)}
 
-\item{WPM_matrix}{The data set object obtained from the application of the WPM method (calcWPM function)}
+\item{WPM_matrix}{The data set object obtained from the application of the
+WPM method (calcWPM function)}
 
 \item{lambda}{The lambda value (between 0 and 1)}
 }
 \value{
-A data frame object that contains the alternatives set scored by and classified in descending
-order (from best to worst classified) according to the weighting proposed by the WASPAS method
-using the input lambda.
+A data frame object that contains the alternatives set scored by and
+classified in descending
+        order (from best to worst classified) according to the weighting
+        proposed by the WASPAS method
+        using the input lambda.
 }
 \description{
 Apply the lambda to assign a relative importance to each of the previously
-used methods (WSM and WPM). Lambda values range from zero to one.
+             used methods (WSM and WPM). Lambda values range from zero to one.
 }
 \examples{
+Do not just copy and paste!
+
+\dontrun{
 applyLambda(WSM_matrix, WPM_matrix, lambda)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, lambda)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.5)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)
+waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)}
+
 }

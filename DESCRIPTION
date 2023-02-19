@@ -13,6 +13,7 @@ Description: Provides a set of functions to implement decision-making systems ba
 Depends: R (>= 4.2.0)
 License: GPL (>= 2)
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 RoxygenNote: 7.2.3
 Suggests: 

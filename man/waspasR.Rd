@@ -29,8 +29,3 @@ Normalize the values of Alternatives X Criteria matrix according to a given
              in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
              and metadata.
 }
-\examples{
-normalize(myAllInOneMatrix)
-normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")
-
-}

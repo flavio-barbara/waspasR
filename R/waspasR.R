@@ -18,8 +18,12 @@
 #' @return A data frame object that contains the input matrix with its values normalized.
 #'
 #' @examples
-#' normalize(myAllInOneMatrix)
-#' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")
+#' To run the examples below change the parameters to valid ones.
+#' Do not just copy and paste!
+#'
+#' \dontrun{
+#' waspas_set <- waspasR(chopper, lambda = 0.23)
+#' waspas_set <- waspasR(myRawData, lambda = 0.8)
 #'
 #' @export
 
@@ -43,10 +47,10 @@ waspasR <- function(dfMatrix, lambda) {
   waspas_matrix <- data.frame(matrix(nrow = nrow(alternatives)+2,ncol = ncol(criteria)+4))
   colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
   waspas_matrix[1,1]="W"
-  waspas_matrix[1,1:ncol(weights)+1] = weights
+  waspas_matrix[1,1:ncol(weights)+1] <- weights
   waspas_matrix[2,1]="F"
-  waspas_matrix[2,1:ncol(flags)+1] = flags
-  waspas_matrix[3:nrow(waspas_matrix), 1] = alternatives
+  waspas_matrix[2,1:ncol(flags)+1] <- flags
+  waspas_matrix[3:nrow(waspas_matrix), 1] <- alternatives
   waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values
   waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[,"WSM_Rank"]
   waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[,"WPM_Rank"]

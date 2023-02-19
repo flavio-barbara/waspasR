@@ -7,7 +7,7 @@
 #' @param outData A flag to determine the vector or matrix (data.frame) to extract from the input matrix
 #'                must be 'A' (Alternatives), 'C' (Criteria), 'F' (Flags), 'V' (Values) or 'W' (Weights)
 #'
-#' @return A data.frame uni-dimentional (vector) or bi-dimentional (matrix) with one of the Following objects:
+#' @return A data.frame one-dimensional (vector) or two-dimensional (matrix) with one of the Following objects:
 #'  - if outData == "A": A vector of Alternatives
 #'  - if outData == "C": A vector of Criteria
 #'  - if outData == "F": A vector of Cost-Benefit Flags
@@ -15,11 +15,14 @@
 #'  - if outData == "W": A vector of Weights
 #'
 #' @examples
+#' Do not just copy and paste!
+#'
+#' \dontrun{
 #' AlternativesList <- sliceData(dfMatrix, "A")
 #' CriteriaList <- sliceData(dfMatrix, "C")
 #' cost_benefit_Flags <- sliceData(dfMatrix, "F")
 #' values_matrix <- sliceData(dfMatrix, "M")
-#' vectorWeights <- sliceData(dfMatrix, "W")
+#' vectorWeights <- sliceData(dfMatrix, "W")}
 #'
 #' @export
 

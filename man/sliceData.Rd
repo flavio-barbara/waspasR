@@ -25,10 +25,13 @@ Slice a matrix or data.frame in “all-in-one” format into dedicated vectors/m
              as data.frame objects
 }
 \examples{
+Do not just copy and paste!
+
+\dontrun{
 AlternativesList <- sliceData(dfMatrix, "A")
 CriteriaList <- sliceData(dfMatrix, "C")
 cost_benefit_Flags <- sliceData(dfMatrix, "F")
 values_matrix <- sliceData(dfMatrix, "M")
-vectorWeights <- sliceData(dfMatrix, "W")
+vectorWeights <- sliceData(dfMatrix, "W")}
 
 }
