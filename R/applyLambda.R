@@ -3,13 +3,11 @@
 #' @description Apply the lambda to assign a relative importance to each of the previously
 #'              used methods (WSM and WPM). Lambda values range from zero to one.
 #' @param WSM_matrix The data set object obtained from the application of the
-#' WSM method (calcWSM function)
 #' @param WPM_matrix The data set object obtained from the application of the
-#' WPM method (calcWPM function)
 #' @param lambda The lambda value (between 0 and 1)
 #'
 #' @return A data frame object that contains the alternatives set scored by and
-#' classified in descending
+#'   classified in descending
 #'         order (from best to worst classified) according to the weighting
 #'         proposed by the WASPAS method
 #'         using the input lambda.

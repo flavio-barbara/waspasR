@@ -9,11 +9,7 @@
 #'              in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
 #'              and metadata.
 #' @param dfMatrix A data set object with Alternatives X Criteria  values to be normalized
-#' @param vCostBenefit A vector of flags that determines if the criterion is a Cost or Benefit one
-#'              Must be same size of Criteria, must contains just strings initiated with B, b, C or c
-#' @param dataFormat Defines how the functions will deal with the input values. There are two possible values:
-#'              "All-in-One" (which is the same that the values 1) or "simple"  (which is the same as 2),
-#'              if omitted the function will assume the All-in-one format.
+#' @param lambda The lambda value (between 0 and 1)
 #'
 #' @return A data frame object that contains the input matrix with its values normalized.
 #'
