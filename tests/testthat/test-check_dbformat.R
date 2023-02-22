@@ -4,13 +4,13 @@ library(waspasR)         # Load our package
 
 #### --- Test on format validation function
 # Creates a mini DB
-load(choppers)
+data(choppers)
 testDB <- choppers[1:5, 1:5]
+testDB[2,2:5] <- list("0.25","0.3","0.2","0.25")
 # Tests the indicators
 test_that("checkInputFormat() checks weights... OK", {
   DBOK <- checkInputFormat(testDB)
-  expect_equal(TRUE,
-               "Error: Values in Vector of Weights must summarize 1")
+  expect_equal(TRUE, DBOK)
 })
 test_that("checkInputFormat() checks indicators... Wrong", {
   tempDB <- testDB
@@ -41,13 +41,14 @@ test_that("checkInputFormat() checks flags... not OK", {
 
 # Tests the weights
 test_that("checkInputFormat() checks weights... Not OK", {
-  DBOK <- checkInputFormat(testDB)
+  tempDB <- testDB
+  tempDB[2,2]<-"1"
+  DBOK <- checkInputFormat(tempDB)
   expect_equal(DBOK,
                "Error: Values in Vector of Weights must summarize 1")
 })
 test_that("checkInputFormat() checks flags... OK", {
   tempDB <- testDB
-  tempDB[2,2:5] <- list("0.25","0.3","0.2","0.25")
   DBOK <- checkInputFormat(tempDB)
   expect_equal(TRUE, DBOK)
 })
@@ -57,9 +58,8 @@ test_that("checkInputFormat() checks values... OK", {
   DBOK <- checkInputFormat(testDB)
   expect_equal(TRUE, DBOK)
   })
-test_that("checkInputFormat() checks flags... Not OK", {
+test_that("checkInputFormat() checks values... Not OK", {
   tempDB <- testDB
-  tempDB[2,2:5] <- list("0.25","0.3","0.2","0.25")
   tempDB[4,2] <- "non convertible to numeric"
   DBOK <- checkInputFormat(tempDB)
   expect_equal(TRUE, DBOK)

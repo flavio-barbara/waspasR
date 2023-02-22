@@ -21,7 +21,7 @@
 normalize <- function(dfMatrix, vCostBenefit) {
   # Test vector of flags X matrix of values dimentions
   if (length(vCostBenefit) != ncol(dfMatrix)) {
-    return("Error: Vector of Cost-Benefit flags must be same size of number of Criteria")
+    return("Error: The cost-benefit flags array must be the same size as the number of criteria")
   }
   # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
   justBorC <- sort(unique(toupper(substr(vCostBenefit,1,1))))
@@ -31,7 +31,7 @@ normalize <- function(dfMatrix, vCostBenefit) {
   # Normalization loop
   flagsCxB <- toupper(substr(vCostBenefit,1,1))
   for(iCol in 1:ncol(dfMatrix)){
-    vAlternativeValues <- dfMatrix[1:lastRow,iCol]
+    vAlternativeValues <- dfMatrix[1:nrow(dfMatrix),iCol]
     vAlternativeValues <- sapply(vAlternativeValues, as.numeric)
     maxv <- max(vAlternativeValues)
     minv <- min(vAlternativeValues)

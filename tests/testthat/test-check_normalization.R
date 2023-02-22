@@ -3,9 +3,15 @@ library(testthat)               # Load testthat package
 library(waspasR)                # Load our package
 
 #### --- Test on normalization function
+# Creates the DB
+data(choppers)
+flags <- sliceData(choppers,"F")
+values <- sliceData(choppers,"V")
+norm_values <- normalize(values,flags)
+
 # Tests if the output is really normalized (maximum value must be 1)
 test_that("normalize() returns a normalized set...", {
-  isMaxEqual1 <- max(sapply(normOutput, as.numeric))
+  isMaxEqual1 <- max(sapply(norm_values, as.numeric))
   expect_equal(1, isMaxEqual1)
 })
 
