@@ -1,4 +1,3 @@
-context("check-format")  # Our file is called "test-check_dbformat.R"
 library(testthat)        # Load testthat package
 library(waspasR)         # Load our package
 

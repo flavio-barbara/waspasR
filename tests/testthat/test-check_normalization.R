@@ -1,4 +1,3 @@
-context("check-normalization")  # Our file is called "test-check_normalization.R"
 library(testthat)               # Load testthat package
 library(waspasR)                # Load our package
 

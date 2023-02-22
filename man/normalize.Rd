@@ -4,35 +4,25 @@
 \alias{normalize}
 \title{normalize()}
 \usage{
-normalize(dfMatrix, vCostBenefit, dataFormat = "all-in-one")
+normalize(dfMatrix, vCostBenefit)
 }
 \arguments{
 \item{dfMatrix}{A data set object with Alternatives X Criteria  values to be normalized}
 
 \item{vCostBenefit}{A vector of flags that determines if the criterion is a Cost or Benefit one
 Must be same size of Criteria, must contains just strings initiated with B, b, C or c}
-
-\item{dataFormat}{Defines how the functions will deal with the input values. There are two possible values:
-"All-in-One" (which is the same that the values 1) or "simple" (which is the same as 2),
-if omitted the function will assume the All-in-one format.}
 }
 \value{
-A data frame object that contains the input matrix with its values normalized.
+A data frame object that contains the input matrix values normalized.
 }
 \description{
 Normalize the values of Alternatives X Criteria matrix according to a given
              Cost-Benefit vector of flags.
-             There are two ways to input the values:
-             (a) The "All in One" format is a data.frame matrix with all the WSM, WPM and WASPAS data
-             and metadata, in this case the parameter vCostBenefit can be null.
-             (b) The "Simple" format is a data.frame matrix with just the values of Alternatives x Criteria,
-             in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
-             and metadata.
 }
 \examples{
 
 \dontrun{
-normalize(myAllInOneMatrix)
-normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit, dataFormat = "simple")}
+normalize(myMatrix, myCostBenefFlags)
+normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)}
 
 }

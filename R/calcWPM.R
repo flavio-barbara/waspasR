@@ -23,11 +23,11 @@ calcWPM <- function(AxCNorm, vWeights) {
   # Test vector of Weights X matrix of values dimentions
   workingMatrix <- AxCNorm
   if (length(vWeights) != ncol(workingMatrix)) {
-    return("Error #05: Vector of Weights values must be same size of number of Criteria")
+    return("Error: Vector of Weights values must be same size of number of Criteria")
   }
   # Test Vector of Weights contents, it must summarize 1
   if (sum(sapply(vWeights, as.numeric)) != 1) {
-    return("Error #06: Values in Vector of Weights must summarize 1!")
+    return("Error: Values in Vector of Weights must summarize 1")
   }
   # WPM Calculation loop
   Points <- rep(0,nrow(workingMatrix))

@@ -11,7 +11,7 @@
 #' \dontrun{
 #' checkDF <- checkInputFormat(dfMatrix)
 #' checkInputFormat(dfMatrix)
-#' paste("My data.frame format:",checkInputFormat(dfMatrix))
+#' paste("My data.frame format:",checkInputFormat(dfMatrix))}
 #'
 #' @export
 
@@ -37,12 +37,9 @@ checkInputFormat <- function(dfMatrix){
     return("Error: Values in Vector of Weights must summarize 1")
   }
   # Test the values
-  tryCatch(
-    { values <- sliceData(dfMatrix,"V")
+  tryCatch({
+    values <- sliceData(dfMatrix,"V")
     values <- sapply(values, as.numeric)
-    },
-    error=function(cond) {
-      return(paste("Check the values, all must be numeric. ",cond))
     },
     warning=function(cond) {
       return(paste("Check the values, all must be numeric. ",cond))

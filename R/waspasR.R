@@ -29,26 +29,26 @@
 
 waspasR <- function(dfMatrix, lambda) {
   # Slice the raw data into specific objects
-  alternatives <- sliceData(choppers,"A")
-  criteria <- sliceData(choppers,"C")
-  weights <- sliceData(choppers,"W")
-  flags <- sliceData(choppers,"F")
-  values <- sliceData(choppers,"V")
+  alternatives <- sliceData(dfMatrix,"A")
+  criteria <- sliceData(dfMatrix,"C")
+  weights <- sliceData(dfMatrix,"W")
+  flags <- sliceData(dfMatrix,"F")
+  values <- sliceData(dfMatrix,"V")
   # Normalize values
-  normalized <- normalize(values, flags, dataFormat = "Simple")
+  normalized <- normalize(values, flags)
   # Calculate WSM and WPN
   wsm <- calcWSM(normalized, weights)
   wpm <- calcWPM(normalized, weights)
   # Apply lambda to get WASPAS
   waspas <- applyLambda(wsm, wpm, lambda)
   # Bind all the stuff
-  waspas_matrix <- data.frame(matrix(nrow = nrow(alternatives)+2,ncol = ncol(criteria)+4))
+  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
   colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
   waspas_matrix[1,1]="W"
   waspas_matrix[1,1:ncol(weights)+1] <- weights
   waspas_matrix[2,1]="F"
   waspas_matrix[2,1:ncol(flags)+1] <- flags
-  waspas_matrix[3:nrow(waspas_matrix), 1] <- alternatives
+  waspas_matrix[3:nrow(waspas_matrix), 1] <- t(alternatives)
   waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values
   waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[,"WSM_Rank"]
   waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[,"WPM_Rank"]

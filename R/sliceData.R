@@ -31,22 +31,26 @@
 sliceData <- function(dfMatrix, outData) {
   outData <- toupper(substr(outData, 1, 1))
   # extract vectors of flags, weights and criteria
+
   if (outData %in% c("C","F","W")){
     for(iRow in 1:3){
       if (dfMatrix[iRow,1] == outData){
         return(dfMatrix[iRow,2:ncol(dfMatrix)])
-      }else if(dfMatrix[iRow,1] == outData){
-        return(dfMatrix[iRow,2:ncol(dfMatrix)])
-      }else if(dfMatrix[iRow,1] == outData){
-        return(dfMatrix[iRow,2:ncol(dfMatrix)])
       }
     }
   }else if (outData =="A"){
-    return(as.data.frame(dfMatrix[4:nrow(dfMatrix),1]))
+    alternatives <- dfMatrix[4:nrow(dfMatrix),1]
+    # Transpose the result to output in the same standard of the other extractions
+    altsVector <- as.data.frame(t(alternatives))
+    return(altsVector)
+    #return(as.data.frame(dfMatrix[4:nrow(dfMatrix),1]))
   }else if (outData =="V"){
     return(dfMatrix[4:nrow(dfMatrix),2:ncol(dfMatrix)])
   }else if (outData =="I"){
-    return(as.data.frame(dfMatrix[1:3, 1]))
+    indicators <- dfMatrix[1:3, 1]
+    # Transpose the result to output in the same standard of the other extractions
+    indsVector <- as.data.frame(t(indicators))
+    return(indsVector)
   }else{
     return("Error: The value of parameter [outData] must be 'A','C','F','I','V' or 'W', please reffer to help")
   }

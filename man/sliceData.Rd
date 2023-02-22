@@ -17,6 +17,7 @@ A data.frame one-dimensional (vector) or two-dimensional (matrix) with one of th
  - if outData == "A": A vector of Alternatives
  - if outData == "C": A vector of Criteria
  - if outData == "F": A vector of Cost-Benefit Flags
+ - if outData == "I": A vector containing the indicators in cells [1:3, 1]
  - if outData == "V": A matrix of values per Alternative x Criterion
  - if outData == "W": A vector of Weights
 }
