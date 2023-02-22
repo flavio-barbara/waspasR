@@ -26,20 +26,20 @@ checkInputFormat <- function(dfMatrix){
     }
   }
   # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
-  flags <- sliceData(choppers,"F")
+  flags <- sliceData(dfMatrix,"F")
   justBorC <- sort(unique(toupper(substr(flags,1,1))))
   if (!identical(justBorC, c("B","C"))) {
     return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
   }
   # Test Vector of Weights contents, it must summarize 1
-  weights <- sliceData(choppers,"W")
+  weights <- sliceData(dfMatrix,"W")
   if (sum(sapply(weights, as.numeric)) != 1) {
-    return("Error: Values in Vector of Weights must summarize 1!")
+    return("Error: Values in Vector of Weights must summarize 1")
   }
   # Test the values
   tryCatch(
-    { values <- sliceData(choppers,"V")
-    values<-sapply(values, as.numeric)
+    { values <- sliceData(dfMatrix,"V")
+    values <- sapply(values, as.numeric)
     },
     error=function(cond) {
       return(paste("Check the values, all must be numeric. ",cond))
@@ -47,4 +47,5 @@ checkInputFormat <- function(dfMatrix){
     warning=function(cond) {
       return(paste("Check the values, all must be numeric. ",cond))
     })
+  return(TRUE)
 }
