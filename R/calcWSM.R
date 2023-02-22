@@ -18,6 +18,7 @@
 #' @export
 
 #################### Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix
+
 calcWSM <- function(AxCNorm, vWeights) {
   # Test vector of Weights X matrix of values dimentions
   workingMatrix <- AxCNorm

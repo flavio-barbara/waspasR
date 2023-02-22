@@ -25,7 +25,7 @@
 #'
 #' @export
 
-#' #################### Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
+#' #################### Putting everything togheter
 
 waspasR <- function(dfMatrix, lambda) {
   # Slice the raw data into specific objects

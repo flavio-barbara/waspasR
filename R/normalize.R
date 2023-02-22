@@ -48,8 +48,10 @@ normalize <- function(dfMatrix, vCostBenefit, dataFormat = "all-in-one") {
   }
   # Normalization loop
   flagsCxB <- toupper(substr(vCostBenefit,1,1))
+  lastRow <- nrow(workingMatrix)
+  lastCol <- ncol(workingMatrix)
   for(iCol in 1:ncol(workingMatrix)){
-    vAlternativeValues <- workingMatrix[1:nrow(workingMatrix),iCol]
+    vAlternativeValues <- workingMatrix[1:lastRow,iCol]
     vAlternativeValues <- sapply(vAlternativeValues, as.numeric)
     maxv <- max(vAlternativeValues)
     minv <- min(vAlternativeValues)

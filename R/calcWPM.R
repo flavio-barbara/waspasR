@@ -18,6 +18,7 @@
 #' @export
 
 #################### Ranking for WPM Method: AxCNorm Matrix  ==>  AxC_WPM Matrix
+
 calcWPM <- function(AxCNorm, vWeights) {
   # Test vector of Weights X matrix of values dimentions
   workingMatrix <- AxCNorm

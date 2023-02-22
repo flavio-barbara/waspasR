@@ -4,7 +4,7 @@ Title: Tool kit to implement WASPAS Based Multi-criteria decision analysis (MCDA
 Version: 0.1.0
 Authors@R: c(person("Barbara", "Flavio", email = "flavio.barbara@gmail.com", role = c("cre","aut")),
              person("Santos", "Marcos", email = "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb"))
-Maintainer: Flavio Barbara <flavio.barbara@gmail.com>
+Maintainer: Barbara Flavio <flavio.barbara@gmail.com>
 Description: Provides a set of functions to implement decision-making systems based on the WASPAS method.
     Set data of Alternatives, valued according to Weighted Criteria common to the alternatives.
     These values must be continuous numeric. Thus, the entries are: 
