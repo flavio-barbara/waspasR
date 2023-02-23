@@ -19,26 +19,22 @@
 checkInputFormat <- function(dfMatrix){
   tryCatch({
     # test flags, weights and criteria
-    procStep <- "Flags"
+    procStep <- "Flags-1"
     for(iRow in 1:3){
       flag <- toupper(substr(dfMatrix[iRow,1], 1, 1))
-      if (!(flag %in% c("F","W","C"))){
-        return("Error: Check the indicators in cells [1:3, 1], they must be 'C', 'F' or 'W'")
-      }
+      if (!(flag %in% c("F","W","C"))) stop()
     }
     # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
     flags <- sliceData(dfMatrix,"F")
     justBorC <- sort(unique(toupper(substr(flags,1,1))))
-    if (!identical(justBorC, c("B","C"))) {
-      return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
-    }
+    procStep <- "Flags-2"
+    if (!identical(justBorC, c("B","C"))) stop()
     # Test Vector of Weights contents, it must summarize 1
-    procStep <- "Weights"
+    procStep <- "Weights-1"
     weights <- sliceData(dfMatrix,"W")
+    procStep <- "Weights-2"
     weights <- sapply(weights, as.numeric)
-    if (sum(weights) != 1) {
-      return("Error: Values in Vector of Weights must summarize 1")
-    }
+    if (sum(weights) != 1) stop()
     # Test the values (if dfMatrix has just numeric-alike variables)
     procStep <- "Values"
     values <- sliceData(dfMatrix,"V")
@@ -57,8 +53,14 @@ checkInputFormat <- function(dfMatrix){
     }
   },
   finally = {
-    if (procStep == "Weights"){
+    if (procStep == "Flags-1"){
+      return("Error: Check the indicators in cells [1:3, 1], they must be 'C', 'F' or 'W'")
+    }else if (procStep == "Flags-2"){
+      return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
+    }else if (procStep == "Weights-1"){
       return("Error: Check Weights values, all must be numeric")
+    }else if (procStep == "Weights-2"){
+      return("Error: Values in Vector of Weights must summarize 1")
     }else if (procStep == "Values"){
       return("Error: Check Aternatives x Criteria values, all must be numeric")
     }else{
