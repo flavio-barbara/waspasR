@@ -9,12 +9,7 @@ waspasR(dfMatrix, lambda)
 \arguments{
 \item{dfMatrix}{A data set object with Alternatives X Criteria  values to be normalized}
 
-\item{vCostBenefit}{A vector of flags that determines if the criterion is a Cost or Benefit one
-Must be same size of Criteria, must contains just strings initiated with B, b, C or c}
-
-\item{dataFormat}{Defines how the functions will deal with the input values. There are two possible values:
-"All-in-One" (which is the same that the values 1) or "simple"  (which is the same as 2),
-if omitted the function will assume the All-in-one format.}
+\item{lambda}{The lambda value (between 0 and 1)}
 }
 \value{
 A data frame object that contains the input matrix with its values normalized.
@@ -35,4 +30,5 @@ Normalize the values of Alternatives X Criteria matrix according to a given
 waspas_set <- waspasR(chopper, lambda = 0.23)
 waspas_set <- waspasR(myRawData, lambda = 0.8)}
 
+Putting everything togheter
 }

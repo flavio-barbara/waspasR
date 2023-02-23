@@ -26,4 +26,6 @@ Calculates the ranking for the alternative's set according to WSM method.
 \dontrun{
 calcWSM(normalized_matrix, vector_weights)
 wpm_matrix <- calcWSM(normalized_matrix, vector_weights)}
+
+Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix
 }

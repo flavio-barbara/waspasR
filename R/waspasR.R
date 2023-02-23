@@ -1,53 +1,85 @@
 #' @title waspasR()
 #'
-#' @description Normalize the values of Alternatives X Criteria matrix according to a given
-#'              Cost-Benefit vector of flags.
-#'              There are two ways to input the values:
-#'              (a) The "All in One" format is a data.frame matrix with all the WSM, WPM and WASPAS data
-#'              and metadata, in this case the parameter vCostBenefit can be null.
-#'              (b) The "Simple" format is a data.frame matrix with just the values of Alternatives x Criteria,
-#'              in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
-#'              and metadata.
-#' @param dfMatrix A data set object with Alternatives X Criteria  values to be normalized
+#' @description Runs the complete process from slicing the original database,
+#'    processing all the computational steps, like computing WSM and WPM formulas,
+#'    applying the lambda as proposed by the method WASPAS, and the building the
+#'    comp.ete output in a new data.frame with the criteria as column names,
+#'    all the original data and appending 3 new columns with the WSM, WPM and
+#'    WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
+#'
+#' @param dfMatrix The original data set in a proper format. The format can be
+#'    checked by checkInputFormat() function.
+#'
 #' @param lambda The lambda value (between 0 and 1)
 #'
-#' @return A data frame object that contains the input matrix with its values normalized.
+#' @return A data.frame object that contains the input matrix with its values
+#'    normalized. Or an error message if some bad data is entered.
 #'
 #' @examples
 #'
 #' \dontrun{
 #' waspas_set <- waspasR(chopper, lambda = 0.23)
-#' waspas_set <- waspasR(myRawData, lambda = 0.8)}
-#'
-#' @export
-
-#' #################### Putting everything togheter
+#' waspas_set <- waspasR(myRawData, lambda = 0.8)
+#' }
+#' Putting everything togheter
 
 waspasR <- function(dfMatrix, lambda) {
-  # Slice the raw data into specific objects
-  alternatives <- sliceData(dfMatrix,"A")
-  criteria <- sliceData(dfMatrix,"C")
-  weights <- sliceData(dfMatrix,"W")
-  flags <- sliceData(dfMatrix,"F")
-  values <- sliceData(dfMatrix,"V")
-  # Normalize values
-  normalized <- normalize(values, flags)
-  # Calculate WSM and WPN
-  wsm <- calcWSM(normalized, weights)
-  wpm <- calcWPM(normalized, weights)
-  # Apply lambda to get WASPAS
-  waspas <- applyLambda(wsm, wpm, lambda)
-  # Bind all the stuff
-  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
-  colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
-  waspas_matrix[1,1]="W"
-  waspas_matrix[1,1:ncol(weights)+1] <- weights
-  waspas_matrix[2,1]="F"
-  waspas_matrix[2,1:ncol(flags)+1] <- flags
-  waspas_matrix[3:nrow(waspas_matrix), 1] <- t(alternatives)
-  waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values
-  waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[,"WSM_Rank"]
-  waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[,"WPM_Rank"]
-  waspas_matrix[3:nrow(waspas_matrix), "WASPAS_Rank"] <- waspas[,"WASPAS_Rank"]
-  return(as.data.frame(waspas_matrix))
+  # Test the normalization
+  tryCatch({
+    # Slice the raw data into specific objects
+    alternatives <- sliceData(dfMatrix,"A")
+    criteria <- sliceData(dfMatrix,"C")
+    weights <- sliceData(dfMatrix,"W")
+    flags <- sliceData(dfMatrix,"F")
+    values <- sliceData(dfMatrix,"V")
+    # Normalize values
+    browser()
+    normalized <- normalize(values, flags)
+    # Calculate WSM and WPN
+  },
+  error=function(cond) {
+    return(paste("Error in normalization.",cond))
+  },
+  warning=function(cond) {
+    return(paste("Cannot normalize values.",cond))
+  })
+
+  # Test the methods calculations
+  browser()
+  tryCatch({
+    wsm <- calcWSM(normalized, weights)
+    wpm <- calcWPM(normalized, weights)
+    # Apply lambda to get WASPAS
+    waspas <- applyLambda(wsm, wpm, lambda)
+  },
+  error=function(cond) {
+    return(paste("Error in calculations",cond))
+  },
+  warning=function(cond) {
+    return(paste("Cannot calculate.",cond))
+  })
+
+  # Test the output database building
+  browser()
+  tryCatch({
+    # Bind all the stuff
+    waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
+    colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
+    waspas_matrix[1,1]="W"
+    waspas_matrix[1,1:ncol(weights)+1] <- weights
+    waspas_matrix[2,1]="F"
+    waspas_matrix[2,1:ncol(flags)+1] <- flags
+    waspas_matrix[3:nrow(waspas_matrix), 1] <- t(alternatives)
+    waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values
+    waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[,"WSM_Rank"]
+    waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[,"WPM_Rank"]
+    waspas_matrix[3:nrow(waspas_matrix), "WASPAS_Rank"] <- waspas[,"WASPAS_Rank"]
+    return(as.data.frame(waspas_matrix))
+  },
+  error=function(cond) {
+    return(paste("Error in database building.",cond))
+  },
+  warning=function(cond) {
+    return(paste("Cannot build output database.",cond))
+})
 }

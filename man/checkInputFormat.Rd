@@ -22,4 +22,5 @@ checkDF <- checkInputFormat(dfMatrix)
 checkInputFormat(dfMatrix)
 paste("My data.frame format:",checkInputFormat(dfMatrix))}
 
+Verify if a data.frame has the proper format to be the waspasR input database
 }

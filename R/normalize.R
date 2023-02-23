@@ -14,33 +14,41 @@
 #' normalize(myMatrix, myCostBenefFlags)
 #' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)}
 #'
-#' @export
-
-#' #################### Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
+#' Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
 
 normalize <- function(dfMatrix, vCostBenefit) {
-  # Test vector of flags X matrix of values dimentions
-  if (length(vCostBenefit) != ncol(dfMatrix)) {
-    return("Error: The cost-benefit flags array must be the same size as the number of criteria")
-  }
-  # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
-  justBorC <- sort(unique(toupper(substr(vCostBenefit,1,1))))
-  if (!identical(justBorC, c("B","C"))) {
-    return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
-  }
-  # Normalization loop
-  flagsCxB <- toupper(substr(vCostBenefit,1,1))
-  for(iCol in 1:ncol(dfMatrix)){
-    vAlternativeValues <- dfMatrix[1:nrow(dfMatrix),iCol]
-    vAlternativeValues <- sapply(vAlternativeValues, as.numeric)
-    maxv <- max(vAlternativeValues)
-    minv <- min(vAlternativeValues)
-    for(iRow in 1:nrow(dfMatrix)){
-      if (flagsCxB[iCol] == "C"){  # Cost-Benefit == "C" (Cost)
-        dfMatrix[iRow,iCol] <- toString(minv / as.numeric(dfMatrix[iRow,iCol]))
-      } else {  # Cost-Benefit == "B" (Benefit)
-        dfMatrix[iRow,iCol] <- toString(as.numeric(dfMatrix[iRow,iCol]) / maxv)
-      }
-    }}
-  return(as.data.frame(dfMatrix))
+  tryCatch({
+    # Test if dfMatrix has just numeric-alike variables
+    values <- sapply(dfMatrix, as.numeric)
+    if (any(is.na(values))) {
+      return("Error: Check the values, all must be numeric")
+    }
+    # Test vector of flags X matrix of values dimentions
+    if (length(vCostBenefit) != ncol(dfMatrix)) {
+      return("Error: The cost-benefit flags array must be the same size as the number of criteria")
+    }
+    # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
+    justBorC <- sort(unique(toupper(substr(vCostBenefit,1,1))))
+    if (!identical(justBorC, c("B","C"))) {
+      return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
+    }
+    # Normalization loop
+    flagsCxB <- toupper(substr(vCostBenefit,1,1))
+    for(iCol in 1:ncol(dfMatrix)){
+      vAlternativeValues <- dfMatrix[1:nrow(dfMatrix),iCol]
+      vAlternativeValues <- sapply(vAlternativeValues, as.numeric)
+      maxv <- max(vAlternativeValues)
+      minv <- min(vAlternativeValues)
+      for(iRow in 1:nrow(dfMatrix)){
+        if (flagsCxB[iCol] == "C"){  # Cost-Benefit == "C" (Cost)
+          dfMatrix[iRow,iCol] <- toString(minv / as.numeric(dfMatrix[iRow,iCol]))
+        } else {  # Cost-Benefit == "B" (Benefit)
+          dfMatrix[iRow,iCol] <- toString(as.numeric(dfMatrix[iRow,iCol]) / maxv)
+        }
+      }}
+    return(as.data.frame(dfMatrix))  },
+  error=function(cond) {  stop(paste("E[N]",cond))
+  },
+  warning=function(cond) {  stop(paste("W[N]",cond))
+  })
 }

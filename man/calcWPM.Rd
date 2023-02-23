@@ -26,4 +26,5 @@ Calculates the ranking for the alternative's set according to WPM method
 \dontrun{
 calcWPM(normalized_matrix, vector_weights)
 wpm_matrix <- calcWPM(normalized_matrix, vector_weights)}
+
 }

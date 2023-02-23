@@ -15,11 +15,31 @@
 #' \dontrun{
 #' calcWSM(normalized_matrix, vector_weights)
 #' wpm_matrix <- calcWSM(normalized_matrix, vector_weights)}
-#' @export
-
-#################### Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix
+#'
+#' Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix
 
 calcWSM <- function(AxCNorm, vWeights) {
+  tryCatch({
+    # WSM Calculation loop
+    Points = rep(0,nrow(workingMatrix))
+    Alternatives <- 1:nrow(workingMatrix)
+    AxC_WSM <- cbind(Alternatives, Points)
+    for(iCol in 1:ncol(workingMatrix)){
+      for(iRow in 1:nrow(workingMatrix)){
+        workingMatrix[iRow,iCol] <- toString(as.numeric(workingMatrix[iRow,iCol])
+                                             * as.numeric(vWeights[iCol]))
+      }}
+    # calculate ranking
+    for(iRow in 1:nrow(workingMatrix)){
+      AxC_WSM[iRow,"Points"] <- sum(sapply(workingMatrix[iRow,],as.numeric))
+    }
+    vWSM <- AxC_WSM[,c("Alternatives","Points")]
+    return(vWSM)
+  },
+  error=function(cond) {  stop(paste("E[S]",cond))
+  },
+  warning=function(cond) {  stop(paste("W[S]",cond))
+  })
   # Test vector of Weights X matrix of values dimentions
   workingMatrix <- AxCNorm
   if (length(vWeights) != ncol(workingMatrix)) {
@@ -29,19 +49,4 @@ calcWSM <- function(AxCNorm, vWeights) {
   if (sum(sapply(vWeights,as.numeric)) != 1) {
     return("Error: Values in Vector of Weights must summarize 1")
   }
-  # WSM Calculation loop
-  Points = rep(0,nrow(workingMatrix))
-  Alternatives <- 1:nrow(workingMatrix)
-  AxC_WSM <- cbind(Alternatives, Points)
-  for(iCol in 1:ncol(workingMatrix)){
-    for(iRow in 1:nrow(workingMatrix)){
-      workingMatrix[iRow,iCol] <- toString(as.numeric(workingMatrix[iRow,iCol])
-                                           * as.numeric(vWeights[iCol]))
-    }}
-  # calculate ranking
-  for(iRow in 1:nrow(workingMatrix)){
-    AxC_WSM[iRow,"Points"] <- sum(sapply(workingMatrix[iRow,],as.numeric))
-  }
-  vWSM <- AxC_WSM[,c("Alternatives","Points")]
-  return(vWSM)
 }

@@ -34,4 +34,5 @@ cost_benefit_Flags <- sliceData(dfMatrix, "F")
 values_matrix <- sliceData(dfMatrix, "M")
 vectorWeights <- sliceData(dfMatrix, "W")}
 
+Extract data from main data.frame
 }
