@@ -11,3 +11,9 @@ test_that("waspasR() check output values..", {
   expect_equal(nrow(choppers), nrow(waspasTest) + 1)
   expect_equal(ncol(choppers), ncol(waspasTest) - 3)
 })
+
+# Covers tryCatch Errors
+test_that("waspasR() checks Error.", {
+  expect_error(waspasR())
+})
+

@@ -24,8 +24,14 @@ test_that("calcWPM() checks Vector of Weights... Not OK", {
   expect_equal("Error: Values in Vector of Weights must summarize 1"
                , wrong)
 })
-test_that("calcWSM() checks Vector of Weights... OK", {
+test_that("calcWPM() checks Vector of Weights... OK", {
   DBOK <- calcWPM(norm_values, weightsVec)
   expect_equal(seq(1,15), DBOK[,1])
   expect_equal(sum(sapply(DBOK[,2], as.numeric)), sum(DBOK[,2]))
 })
+
+# Covers tryCatch Errors
+test_that("calcWPM() checks Error.", {
+  expect_error(calcWPM())
+})
+

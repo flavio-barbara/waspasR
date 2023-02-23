@@ -30,3 +30,10 @@ test_that("normalize() deals with a wrong set of flags...", {
   expect_equal(myOutput,
                "Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
 })
+
+# Covers tryCatch Errors
+test_that("normalize() checks Error.", {
+  expect_error(normalize())
+})
+
+

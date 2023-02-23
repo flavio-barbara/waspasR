@@ -29,3 +29,8 @@ test_that("calcWSM() checks Vector of Weights... OK", {
   expect_equal(seq(1,15), DBOK[,1])
   expect_equal(sum(sapply(DBOK[,2], as.numeric)), sum(DBOK[,2]))
 })
+
+# Covers tryCatch Errors
+test_that("calcWSM() checks Error.", {
+  expect_error(calcWSM())
+})

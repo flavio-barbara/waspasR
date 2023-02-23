@@ -44,3 +44,9 @@ test_that("sliceData() slices indicators...", {
   chopperIndicators <- as.data.frame(t(choppers[1:3, 1]))
   expect_equal(chopperIndicators, DBOK)
 })
+
+# Covers tryCatch Errors
+test_that("sliceData() checks Error.", {
+  expect_error(sliceData())
+})
+
