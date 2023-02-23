@@ -28,7 +28,7 @@ calcWSM <- function(AxCNorm, vWeights) {
     AxC_WSM <- cbind(Alternatives, Points)
     # Test vector of Weights X matrix of values dimentions
     if (length(vWeights) != ncol(AxCNorm)) {
-      return("Error: Vector of Weights values must be same size of number of Criteria")
+      return("Error: The weight vector must be the same size as the number of criteria")
     }
     # Test Vector of Weights contents, it must summarize 1
     if (sum(sapply(vWeights,as.numeric)) != 1) {
