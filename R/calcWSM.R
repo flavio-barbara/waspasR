@@ -26,6 +26,14 @@ calcWSM <- function(AxCNorm, vWeights) {
     Points = rep(0,nrow(AxCNorm))
     Alternatives <- 1:nrow(AxCNorm)
     AxC_WSM <- cbind(Alternatives, Points)
+    # Test vector of Weights X matrix of values dimentions
+    if (length(vWeights) != ncol(AxCNorm)) {
+      return("Error: Vector of Weights values must be same size of number of Criteria")
+    }
+    # Test Vector of Weights contents, it must summarize 1
+    if (sum(sapply(vWeights,as.numeric)) != 1) {
+      return("Error: Values in Vector of Weights must summarize 1")
+    }
     for(iCol in 1:ncol(AxCNorm)){
       for(iRow in 1:nrow(AxCNorm)){
         AxCNorm[iRow,iCol] <- toString(as.numeric(AxCNorm[iRow,iCol])
@@ -40,14 +48,11 @@ calcWSM <- function(AxCNorm, vWeights) {
   },
   error=function(cond) {  stop(paste("E[S]",cond))
   },
-  warning=function(cond) {  stop(paste("W[S]",cond))
+  warning=function(cond) {
+    if (grepl("NAs intro", cond)){
+      return('W[S] Error: Some non numeric-alike value was found')
+    }else{
+      message(paste("W[S]",cond))
+    }
   })
-  # Test vector of Weights X matrix of values dimentions
-  if (length(vWeights) != ncol(AxCNorm)) {
-    return("Error: Vector of Weights values must be same size of number of Criteria")
-  }
-  # Test Vector of Weights contents, it must summarize 1
-  if (sum(sapply(vWeights,as.numeric)) != 1) {
-    return("Error: Values in Vector of Weights must summarize 1")
-  }
 }

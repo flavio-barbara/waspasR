@@ -37,12 +37,18 @@ applyLambda <- function(WSM_matrix, WPM_matrix, lambda) {
     # WASPAS Ranking
     waspas_matrix <- cbind(WSM_matrix,WPM_matrix[,"Points"], WASPAS=0.0)
     colnames(waspas_matrix) <- c("Alternative", "WSM_Rank","WPM_Rank","WASPAS_Rank")
-    waspas_matrix[,"WASPAS_Rank"] <- waspas_matrix[,"WSM_Rank"] *
-      lambda + waspas_matrix[,"WPM_Rank"] * (1-lambda)
+    waspas_matrix[,"WASPAS_Rank"] <-
+          as.numeric(waspas_matrix[,"WSM_Rank"]) * lambda +
+          as.numeric(waspas_matrix[,"WPM_Rank"]) * (1-lambda)
     return(as.data.frame(waspas_matrix))
   },
   error=function(cond) {  stop(paste("E[AL]",cond))
   },
-  warning=function(cond) {  stop(paste("W[AL]",cond))
+  warning=function(cond) {
+    if (grepl("NAs intro", cond)){
+      return('W[AL] Error: Some non numeric-alike value was found')
+    }else{
+      message(paste("W[AL]",cond))
+    }
   })
 }

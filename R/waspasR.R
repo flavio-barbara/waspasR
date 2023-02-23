@@ -26,6 +26,7 @@
 # Putting everything togheter
 waspasR <- function(dfMatrix, lambda) {
   # Test the normalization
+  #browser()
   tryCatch({
     # Slice the raw data into specific objects
     alternatives <- sliceData(dfMatrix,"A")
@@ -35,7 +36,8 @@ waspasR <- function(dfMatrix, lambda) {
     values <- sliceData(dfMatrix,"V")
     # Normalize values
     normalized <- normalize(values, flags)
-    # Calculate WSM and WPN
+    # If something went wrong just stops
+    if (is.character(normalized)) return(normalized)    # Calculate WSM and WPN
   },
   error=function(cond) {  stop(paste("E[WN]",cond))
   },
@@ -45,6 +47,8 @@ waspasR <- function(dfMatrix, lambda) {
   tryCatch({
     wsm <- calcWSM(normalized, weights)
     wpm <- calcWPM(normalized, weights)
+    # If something went wrong just stops
+    if (is.character(wsm)) return(wsm)
     # Apply lambda to get WASPAS
     waspas <- applyLambda(wsm, wpm, lambda)
   },

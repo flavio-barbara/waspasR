@@ -21,9 +21,6 @@ normalize <- function(dfMatrix, vCostBenefit) {
   tryCatch({
     # Test if dfMatrix has just numeric-alike variables
     values <- sapply(dfMatrix, as.numeric)
-    if (any(is.na(values))) {
-      return("Error: Check the values, all must be numeric")
-    }
     # Test vector of flags X matrix of values dimentions
     if (length(vCostBenefit) != ncol(dfMatrix)) {
       return("Error: The cost-benefit flags array must be the same size as the number of criteria")
@@ -50,6 +47,11 @@ normalize <- function(dfMatrix, vCostBenefit) {
     return(as.data.frame(dfMatrix))  },
   error=function(cond) {  stop(paste("E[N]",cond))
   },
-  warning=function(cond) {  stop(paste("W[N]",cond))
+  warning=function(cond) {
+    if (grepl("NAs intro", cond)){
+      return('W[N] Error: Some non numeric-alike value was found')
+    }else{
+      message(paste("W[N]",cond))
+    }
   })
 }

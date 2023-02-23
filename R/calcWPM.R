@@ -44,9 +44,14 @@ calcWPM <- function(AxCNorm, vWeights) {
     }
     vWPM <- AxC_WPM[,c("Alternatives", "Points")]
     return(vWPM)
-},
-error=function(cond) {  stop(paste("E[P]",cond))
-},
-warning=function(cond) {  stop(paste("W[P]",cond))
+  },
+  error=function(cond) {  stop(paste("E[P]",cond))
+  },
+  warning=function(cond) {
+    if (grepl("NAs intro", cond)){
+      return('W[P] Error: Some non numeric-alike value was found')
+    }else{
+      message(paste("W[P]",cond))
+  }
 })
 }
