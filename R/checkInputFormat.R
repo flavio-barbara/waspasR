@@ -13,6 +13,7 @@
 #' checkInputFormat(dfMatrix)
 #' paste("My data.frame format:",checkInputFormat(dfMatrix))
 #' }
+#' @export
 
 # Verify if a data.frame has the proper format to be the waspasR input database
 checkInputFormat <- function(dfMatrix){
@@ -38,7 +39,6 @@ checkInputFormat <- function(dfMatrix){
     # Test the values (if dfMatrix has just numeric-alike variables)
     values <- sliceData(dfMatrix,"V")
     values <- sapply(values, as.numeric)
-    browser()
     if (any(is.na(values))) {
       return("Error: Check the values, all must be numeric")
     }

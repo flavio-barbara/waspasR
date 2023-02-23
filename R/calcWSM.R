@@ -16,23 +16,24 @@
 #' calcWSM(normalized_matrix, vector_weights)
 #' wpm_matrix <- calcWSM(normalized_matrix, vector_weights)
 #' }
+#' @export
 
 # Ranking for WSM Method: AxCNorm Matrix  ==>  AxC_WSM Matrix
 
 calcWSM <- function(AxCNorm, vWeights) {
   tryCatch({
     # WSM Calculation loop
-    Points = rep(0,nrow(workingMatrix))
-    Alternatives <- 1:nrow(workingMatrix)
+    Points = rep(0,nrow(AxCNorm))
+    Alternatives <- 1:nrow(AxCNorm)
     AxC_WSM <- cbind(Alternatives, Points)
-    for(iCol in 1:ncol(workingMatrix)){
-      for(iRow in 1:nrow(workingMatrix)){
-        workingMatrix[iRow,iCol] <- toString(as.numeric(workingMatrix[iRow,iCol])
+    for(iCol in 1:ncol(AxCNorm)){
+      for(iRow in 1:nrow(AxCNorm)){
+        AxCNorm[iRow,iCol] <- toString(as.numeric(AxCNorm[iRow,iCol])
                                              * as.numeric(vWeights[iCol]))
       }}
     # calculate ranking
-    for(iRow in 1:nrow(workingMatrix)){
-      AxC_WSM[iRow,"Points"] <- sum(sapply(workingMatrix[iRow,],as.numeric))
+    for(iRow in 1:nrow(AxCNorm)){
+      AxC_WSM[iRow,"Points"] <- sum(sapply(AxCNorm[iRow,],as.numeric))
     }
     vWSM <- AxC_WSM[,c("Alternatives","Points")]
     return(vWSM)
@@ -42,8 +43,7 @@ calcWSM <- function(AxCNorm, vWeights) {
   warning=function(cond) {  stop(paste("W[S]",cond))
   })
   # Test vector of Weights X matrix of values dimentions
-  workingMatrix <- AxCNorm
-  if (length(vWeights) != ncol(workingMatrix)) {
+  if (length(vWeights) != ncol(AxCNorm)) {
     return("Error: Vector of Weights values must be same size of number of Criteria")
   }
   # Test Vector of Weights contents, it must summarize 1

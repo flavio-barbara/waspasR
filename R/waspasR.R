@@ -34,34 +34,25 @@ waspasR <- function(dfMatrix, lambda) {
     flags <- sliceData(dfMatrix,"F")
     values <- sliceData(dfMatrix,"V")
     # Normalize values
-    browser()
     normalized <- normalize(values, flags)
     # Calculate WSM and WPN
   },
-  error=function(cond) {
-    return(paste("Error in normalization.",cond))
+  error=function(cond) {  stop(paste("E[WN]",cond))
   },
-  warning=function(cond) {
-    return(paste("Cannot normalize values.",cond))
+  warning=function(cond) {  stop(paste("W[WN]",cond))
   })
-
   # Test the methods calculations
-  browser()
   tryCatch({
     wsm <- calcWSM(normalized, weights)
     wpm <- calcWPM(normalized, weights)
     # Apply lambda to get WASPAS
     waspas <- applyLambda(wsm, wpm, lambda)
   },
-  error=function(cond) {
-    return(paste("Error in calculations",cond))
+  error=function(cond) {  stop(paste("E[WC]",cond))
   },
-  warning=function(cond) {
-    return(paste("Cannot calculate.",cond))
+  warning=function(cond) {  stop(paste("W[WC]",cond))
   })
-
   # Test the output database building
-  browser()
   tryCatch({
     # Bind all the stuff
     waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
@@ -77,10 +68,8 @@ waspasR <- function(dfMatrix, lambda) {
     waspas_matrix[3:nrow(waspas_matrix), "WASPAS_Rank"] <- waspas[,"WASPAS_Rank"]
     return(as.data.frame(waspas_matrix))
   },
-  error=function(cond) {
-    return(paste("Error in database building.",cond))
+  error=function(cond) {  stop(paste("E[WB]",cond))
   },
-  warning=function(cond) {
-    return(paste("Cannot build output database.",cond))
-})
+  warning=function(cond) {  stop(paste("W[WB]",cond))
+  })
 }

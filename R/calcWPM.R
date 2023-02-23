@@ -16,13 +16,13 @@
 #' calcWPM(normalized_matrix, vector_weights)
 #' wpm_matrix <- calcWPM(normalized_matrix, vector_weights)
 #' }
+#' @export
 
 # Ranking for WPM Method: AxCNorm Matrix  ==>  AxC_WPM Matrix
 calcWPM <- function(AxCNorm, vWeights) {
   tryCatch({
     # Test vector of Weights X matrix of values dimentions
-    workingMatrix <- AxCNorm
-    if (length(vWeights) != ncol(workingMatrix)) {
+    if (length(vWeights) != ncol(AxCNorm)) {
       return("Error: Vector of Weights values must be same size of number of Criteria")
     }
     # Test Vector of Weights contents, it must summarize 1
@@ -30,17 +30,17 @@ calcWPM <- function(AxCNorm, vWeights) {
       return("Error: Values in Vector of Weights must summarize 1")
     }
     # WPM Calculation loop
-    Points <- rep(0,nrow(workingMatrix))
-    Alternatives <- 1:nrow(workingMatrix)
+    Points <- rep(0,nrow(AxCNorm))
+    Alternatives <- 1:nrow(AxCNorm)
     AxC_WPM <- cbind(Points, Alternatives)
-    for(iCol in 1:ncol(workingMatrix)){
-      for(iRow in 1:nrow(workingMatrix)){
-        workingMatrix[iRow,iCol] <- toString(as.numeric(workingMatrix[iRow,iCol])
+    for(iCol in 1:ncol(AxCNorm)){
+      for(iRow in 1:nrow(AxCNorm)){
+        AxCNorm[iRow,iCol] <- toString(as.numeric(AxCNorm[iRow,iCol])
                                              ^ as.numeric(vWeights[iCol]))
       }}
     # calculate ranking
-    for(iRow in 1:nrow(workingMatrix)){
-      AxC_WPM[iRow,"Points"] <- prod(sapply(workingMatrix[iRow,],as.numeric))
+    for(iRow in 1:nrow(AxCNorm)){
+      AxC_WPM[iRow,"Points"] <- prod(sapply(AxCNorm[iRow,],as.numeric))
     }
     vWPM <- AxC_WPM[,c("Alternatives", "Points")]
     return(vWPM)

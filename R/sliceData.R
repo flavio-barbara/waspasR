@@ -24,6 +24,7 @@
 #' values_matrix <- sliceData(dfMatrix, "M")
 #' vectorWeights <- sliceData(dfMatrix, "W")
 #' }
+#' @export
 
 # Extract data from main data.frame
 sliceData <- function(dfMatrix, outData) {

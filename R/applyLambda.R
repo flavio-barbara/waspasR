@@ -21,6 +21,7 @@
 #' waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.5)
 #' waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)
 #' }
+#' @export
 
 # Determines relative values according to the WASPAS method
 applyLambda <- function(WSM_matrix, WPM_matrix, lambda) {
