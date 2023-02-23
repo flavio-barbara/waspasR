@@ -23,7 +23,6 @@ Normalize the values of Alternatives X Criteria matrix according to a given
 
 \dontrun{
 normalize(myMatrix, myCostBenefFlags)
-normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)}
-
-Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
+normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)
+}
 }

@@ -14,11 +14,10 @@
 #'
 #' \dontrun{
 #' calcWPM(normalized_matrix, vector_weights)
-#' wpm_matrix <- calcWPM(normalized_matrix, vector_weights)}
-#'
-#' @export
-#' Ranking for WPM Method: AxCNorm Matrix  ==>  AxC_WPM Matrix
+#' wpm_matrix <- calcWPM(normalized_matrix, vector_weights)
+#' }
 
+# Ranking for WPM Method: AxCNorm Matrix  ==>  AxC_WPM Matrix
 calcWPM <- function(AxCNorm, vWeights) {
   tryCatch({
     # Test vector of Weights X matrix of values dimentions

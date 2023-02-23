@@ -12,10 +12,10 @@
 #'
 #' \dontrun{
 #' normalize(myMatrix, myCostBenefFlags)
-#' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)}
-#'
-#' Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
+#' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)
+#' }
 
+# Normalization: dfMatrix Matrix  ==>  AxCNorm Matrix
 normalize <- function(dfMatrix, vCostBenefit) {
   tryCatch({
     # Test if dfMatrix has just numeric-alike variables

@@ -7,28 +7,27 @@
 waspasR(dfMatrix, lambda)
 }
 \arguments{
-\item{dfMatrix}{A data set object with Alternatives X Criteria  values to be normalized}
+\item{dfMatrix}{The original data set in a proper format. The format can be
+checked by checkInputFormat() function.}
 
 \item{lambda}{The lambda value (between 0 and 1)}
 }
 \value{
-A data frame object that contains the input matrix with its values normalized.
+A data.frame object that contains the input matrix with its values
+   normalized. Or an error message if some bad data is entered.
 }
 \description{
-Normalize the values of Alternatives X Criteria matrix according to a given
-             Cost-Benefit vector of flags.
-             There are two ways to input the values:
-             (a) The "All in One" format is a data.frame matrix with all the WSM, WPM and WASPAS data
-             and metadata, in this case the parameter vCostBenefit can be null.
-             (b) The "Simple" format is a data.frame matrix with just the values of Alternatives x Criteria,
-             in this case the vector of Cost-Benefit flags must be entered in the parameter vCostBenefit.
-             and metadata.
+Runs the complete process from slicing the original database,
+   processing all the computational steps, like computing WSM and WPM formulas,
+   applying the lambda as proposed by the method WASPAS, and the building the
+   comp.ete output in a new data.frame with the criteria as column names,
+   all the original data and appending 3 new columns with the WSM, WPM and
+   WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
 }
 \examples{
 
 \dontrun{
 waspas_set <- waspasR(chopper, lambda = 0.23)
-waspas_set <- waspasR(myRawData, lambda = 0.8)}
-
-Putting everything togheter
+waspas_set <- waspasR(myRawData, lambda = 0.8)
+}
 }

@@ -21,8 +21,9 @@
 #' waspas_set <- waspasR(chopper, lambda = 0.23)
 #' waspas_set <- waspasR(myRawData, lambda = 0.8)
 #' }
-#' Putting everything togheter
+#' @export
 
+# Putting everything togheter
 waspasR <- function(dfMatrix, lambda) {
   # Test the normalization
   tryCatch({

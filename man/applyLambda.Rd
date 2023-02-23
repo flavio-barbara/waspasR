@@ -31,7 +31,6 @@ applyLambda(WSM_matrix, WPM_matrix, lambda)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, lambda)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0)
 waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.5)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)}
-
-Calculate relative values according to WASPAS method
+waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)
+}
 }

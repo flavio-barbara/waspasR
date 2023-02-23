@@ -10,17 +10,16 @@ checkInputFormat(dfMatrix)
 \item{dfMatrix}{The original database to be validated in its format}
 }
 \value{
-tbd
+True if everything is OK, an error message in case of bad format
 }
 \description{
-Verify if the database to be submitted to WASPAS is correctly formated
+Verify if the database to be submitted to WASPAS is correctly formatted
 }
 \examples{
 
 \dontrun{
 checkDF <- checkInputFormat(dfMatrix)
 checkInputFormat(dfMatrix)
-paste("My data.frame format:",checkInputFormat(dfMatrix))}
-
-Verify if a data.frame has the proper format to be the waspasR input database
+paste("My data.frame format:",checkInputFormat(dfMatrix))
+}
 }

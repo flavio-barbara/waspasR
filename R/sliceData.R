@@ -22,10 +22,10 @@
 #' CriteriaList <- sliceData(dfMatrix, "C")
 #' cost_benefit_Flags <- sliceData(dfMatrix, "F")
 #' values_matrix <- sliceData(dfMatrix, "M")
-#' vectorWeights <- sliceData(dfMatrix, "W")}
-#'
-#' Extract data from main data.frame
+#' vectorWeights <- sliceData(dfMatrix, "W")
+#' }
 
+# Extract data from main data.frame
 sliceData <- function(dfMatrix, outData) {
   tryCatch({
     # extract vectors of flags, weights and criteria
