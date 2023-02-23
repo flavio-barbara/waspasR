@@ -26,6 +26,7 @@
 # Putting everything togheter
 waspasR <- function(dfMatrix, lambda) {
   # Test the normalization
+  browser()
   tryCatch({
     formatOK <- checkInputFormat(dfMatrix)
     if (is.character(formatOK)){
@@ -46,6 +47,8 @@ waspasR <- function(dfMatrix, lambda) {
   # Run the methods calculations
   wsm <- calcWSM(normalized, weights)
   wpm <- calcWPM(normalized, weights)
+  # Apply lambda to get WASPAS
+  waspas <- applyLambda(wsm, wpm, lambda)
   # Bind all the stuff
   waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
   colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
