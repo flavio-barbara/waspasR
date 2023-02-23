@@ -26,7 +26,6 @@
 # Putting everything togheter
 waspasR <- function(dfMatrix, lambda) {
   # Test the normalization
-  browser()
   tryCatch({
     formatOK <- checkInputFormat(dfMatrix)
     if (is.character(formatOK)){
