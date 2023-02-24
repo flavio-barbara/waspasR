@@ -55,7 +55,5 @@ sliceData <- function(dfMatrix, outData) {
     }
   },
   error=function(cond) {  stop(paste("E[SD]",cond))
-  },
-  warning=function(cond) {  stop(paste("W[SD]",cond))
   })
 }

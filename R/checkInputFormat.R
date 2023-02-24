@@ -17,6 +17,8 @@
 
 # Verify if a data.frame has the proper format to be the waspasR input database
 checkInputFormat <- function(dfMatrix){
+  if (missing(dfMatrix)) return("Parameter dfMatrix is missing")
+  if (!is.data.frame(dfMatrix)) return("Parameter dfMatrix must be a data.frame")
   tryCatch({
     # test flags, weights and criteria
     procStep <- "Flags-1"
@@ -32,8 +34,8 @@ checkInputFormat <- function(dfMatrix){
     # Test Vector of Weights contents, it must summarize 1
     procStep <- "Weights-1"
     weights <- sliceData(dfMatrix,"W")
-    procStep <- "Weights-2"
     weights <- sapply(weights, as.numeric)
+    procStep <- "Weights-2"
     if (sum(weights) != 1) stop()
     # Test the values (if dfMatrix has just numeric-alike variables)
     procStep <- "Values"
@@ -48,8 +50,6 @@ checkInputFormat <- function(dfMatrix){
     if (grepl("NAs intro", cond)){
       # Some non numeric-alike variable
       # will be dealt with in the "finally" clause
-    }else{
-      message(paste("W[CI]",cond))
     }
   },
   finally = {

@@ -25,17 +25,12 @@
 
 # Putting everything togheter
 waspasR <- function(dfMatrix, lambda) {
-  # Test the normalization
-  browser()
-  tryCatch({
-    formatOK <- checkInputFormat(dfMatrix)
-    if (is.character(formatOK)){
-      return(formatOK)
-    }
-  },
-  error=function(cond) {
-    stop(paste("E[WN]",cond))
-  })
+  # Test the entered data
+  if (missing(dfMatrix)) return("Parameter dfMatrix is missing")
+  if (missing(lambda)) return("Parameter lambda is missing")
+  formatOK <- checkInputFormat(dfMatrix)
+  if (is.character(formatOK))
+    return(formatOK)
   # Slice the raw data into specific objects
   alternatives <- sliceData(dfMatrix,"A")
   criteria <- sliceData(dfMatrix,"C")

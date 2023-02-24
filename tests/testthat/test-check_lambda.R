@@ -15,7 +15,8 @@ wpm <- calcWPM(norm_values, weightsVec)
 test_that("applyLambda() deals with non-numeric input values.", {
   nonnum <- wpm
   nonnum[2,2] <- "non-numeric value"
-  expect_error(applyLambda(lambdaTest <- applyLambda(wsm, nonnum, lambda = 0.5)))
+  lambdaTest <- applyLambda(wsm, nonnum, lambda = 0.5)
+  expect_equal(lambdaTest, "W[AL] Error: Some non numeric-alike value was found")
 })
 
 # Test value of lambda

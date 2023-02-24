@@ -42,13 +42,12 @@ applyLambda <- function(WSM_matrix, WPM_matrix, lambda) {
           as.numeric(waspas_matrix[,"WPM_Rank"]) * (1-lambda)
     return(as.data.frame(waspas_matrix))
   },
-  error=function(cond) {  stop(paste("E[AL]",cond))
+  error=function(cond) {
+    stop(paste("E[AL]",cond))
   },
   warning=function(cond) {
     if (grepl("NAs intro", cond)){
-      return('W[AL] Error: Some non numeric-alike value was found')
-    }else{
-      message(paste("W[AL]",cond))
+      return("W[AL] Error: Some non numeric-alike value was found")
     }
   })
 }
