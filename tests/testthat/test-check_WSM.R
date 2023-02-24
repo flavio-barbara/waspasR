@@ -21,8 +21,11 @@ test_that("calcWSM() checks Vector of Weights... Not OK", {
   tempVec <- weightsVec
   tempVec[1,1] <- "1"
   wrong <- calcWSM(norm_values, tempVec)
-  expect_equal("Error: Values in Vector of Weights must summarize 1"
-               , wrong)
+  expect_equal(wrong, "Error: Values in Vector of Weights must summarize 1")
+  tempVec <- weightsVec
+  tempVec[1,1] <- "non numeric-alike value"
+  wrong <- calcWSM(norm_values, tempVec)
+  expect_equal(wrong, "W[S] Error: Some non numeric-alike value was found")
 })
 test_that("calcWSM() checks Vector of Weights... OK", {
   DBOK <- calcWSM(norm_values, weightsVec)

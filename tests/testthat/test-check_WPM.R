@@ -21,9 +21,12 @@ test_that("calcWPM() checks Vector of Weights... Not OK", {
   tempVec <- weightsVec
   tempVec[1,1] <- "1"
   wrong <- calcWPM(norm_values, tempVec)
-  expect_equal("Error: Values in Vector of Weights must summarize 1"
-               , wrong)
-})
+  expect_equal(wrong, "Error: Values in Vector of Weights must summarize 1")
+  tempVec <- weightsVec
+  tempVec[1,1] <- "non numeric-alike value"
+  wrong <- calcWSM(norm_values, tempVec)
+  expect_equal(wrong, "W[P] Error: Some non numeric-alike value was found")
+  })
 test_that("calcWPM() checks Vector of Weights... OK", {
   DBOK <- calcWPM(norm_values, weightsVec)
   expect_equal(seq(1,15), DBOK[,1])

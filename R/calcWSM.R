@@ -50,9 +50,7 @@ calcWSM <- function(AxCNorm, vWeights) {
   },
   warning=function(cond) {
     if (grepl("NAs intro", cond)){
-      return('W[S] Error: Some non numeric-alike value was found')
-    }else{
-      message(paste("W[S]",cond))
+      return("W[S] Error: Some non numeric-alike value was found)
     }
   })
 }
