@@ -12,8 +12,8 @@ weightsVec <- sliceData(choppers,"W")
 test_that("calcWSM() checks wrong dimensions...", {
   tempVec <- weightsVec[,-1]
   wrong <- calcWSM(norm_values, tempVec)
-  expect_equal("Error: The weight vector must be the same size as the number of criteria"
-               , wrong)
+  expect_equal(wrong,
+    "Error: The weight vector must be the same size as the number of criteria")
 })
 
 # Test Vector of Weights contents

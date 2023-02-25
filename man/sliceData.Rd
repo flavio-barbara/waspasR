@@ -9,11 +9,13 @@ sliceData(dfMatrix, outData)
 \arguments{
 \item{dfMatrix}{A matrix or data.frame in “all-in-one” format}
 
-\item{outData}{A flag to determine the vector or matrix (data.frame) to extract from the input matrix
-must be 'A' (Alternatives), 'C' (Criteria), 'F' (Flags), 'V' (Values) or 'W' (Weights)}
+\item{outData}{A flag to determine the vector or matrix (data.frame)
+to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria),
+'F' (Flags), 'V' (Values) or 'W' (Weights)}
 }
 \value{
-A data.frame one-dimensional (vector) or two-dimensional (matrix) with one of the Following objects:
+A data.frame one-dimensional (vector) or two-dimensional (matrix)
+with one of the Following objects:
  - if outData == "A": A vector of Alternatives
  - if outData == "C": A vector of Criteria
  - if outData == "F": A vector of Cost-Benefit Flags
@@ -22,8 +24,8 @@ A data.frame one-dimensional (vector) or two-dimensional (matrix) with one of th
  - if outData == "W": A vector of Weights
 }
 \description{
-Slice a matrix or data.frame in “all-in-one” format into dedicated vectors/matrices
-             as data.frame objects
+Slice a matrix or data.frame in “all-in-one” format into
+dedicated vectors/matrices as data.frame objects
 }
 \examples{
 

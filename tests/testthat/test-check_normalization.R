@@ -19,7 +19,7 @@ test_that("normalize() deals with parameters with different sizes.", {
   wrongFlags <- append(flags, "one more flag")
   myOutput <- normalize(values, wrongFlags)
   expect_equal(myOutput,
-               "Error: The cost-benefit flags array must be the same size as the number of criteria")
+  "Error: The cost-benefit flags array must be the same size as the number of criteria")
 })
 
 # Test if normalize() deals with a wrong set of flags
@@ -28,7 +28,7 @@ test_that("normalize() deals with a wrong set of flags.", {
   wrongFlags[1,1] <- "a wrong flag"
   myOutput <- normalize(values, wrongFlags)
   expect_equal(myOutput,
-               "Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
+  "Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
 })
 
 # Test if normalize() deals with non numeric-alike values

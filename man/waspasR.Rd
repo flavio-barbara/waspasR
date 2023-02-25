@@ -18,11 +18,11 @@ A data.frame object that contains the input matrix with its values
 }
 \description{
 Runs the complete process from slicing the original database,
-   processing all the computational steps, like computing WSM and WPM formulas,
-   applying the lambda as proposed by the method WASPAS, and the building the
-   comp.ete output in a new data.frame with the criteria as column names,
-   all the original data and appending 3 new columns with the WSM, WPM and
-   WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
+   processing all the computational steps, like computing WSM and WPM
+   formulas, applying the lambda as proposed by the method WASPAS, and the
+   building the complete output in a new data.frame with the criteria as
+   column names, all the original data and appending 3 new columns with
+   the WSM, WPM and WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
 }
 \examples{
 

@@ -7,8 +7,8 @@ data(choppers)
 # Tests wrong parameter
 test_that("sliceData() checks wrong parameter...", {
   wrong <- sliceData(choppers, "1")
-  expect_equal("Error: The value of parameter [outData] must be 'A','C','F','I','V' or 'W', please reffer to help"
-               , wrong)
+  expect_equal(wrong,
+    "Error: The value of parameter [outData] must be 'A','C','F','I','V' or 'W', please reffer to help")
 })
 
 # Tests the output of flags, weights and criteria

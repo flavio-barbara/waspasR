@@ -7,17 +7,19 @@
 normalize(dfMatrix, vCostBenefit)
 }
 \arguments{
-\item{dfMatrix}{A data set object with Alternatives X Criteria  values to be normalized}
+\item{dfMatrix}{A data set object with Alternatives X Criteria  values
+to be normalized}
 
-\item{vCostBenefit}{A vector of flags that determines if the criterion is a Cost or Benefit one
-Must be same size of Criteria, must contains just strings initiated with B, b, C or c}
+\item{vCostBenefit}{A vector of flags that determines if the criterion
+is a Cost or Benefit. Must be same size of Criteria, must contains
+just strings initiated with B, b, C or c}
 }
 \value{
-A data frame object that contains the input matrix values normalized.
+A data frame object that contains the input matrix values normalized
 }
 \description{
-Normalize the values of Alternatives X Criteria matrix according to a given
-             Cost-Benefit vector of flags.
+Normalize the values of Alternatives X Criteria matrix
+according to a given Cost-Benefit vector of flags.
 }
 \examples{
 

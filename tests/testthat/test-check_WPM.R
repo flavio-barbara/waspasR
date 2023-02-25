@@ -12,8 +12,8 @@ weightsVec <- sliceData(choppers,"W")
 test_that("calcWPM() checks wrong dimensions...", {
   tempVec <- weightsVec[,-1]
   wrong <- calcWPM(norm_values, tempVec)
-  expect_equal("Error: Vector of Weights values must be same size of number of Criteria"
-               , wrong)
+  expect_equal(wrong,
+    "Error: Vector of Weights values must be same size of number of Criteria")
 })
 
 # Test Vector of Weights contents

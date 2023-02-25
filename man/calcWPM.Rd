@@ -7,19 +7,23 @@
 calcWPM(AxCNorm, vWeights)
 }
 \arguments{
-\item{AxCNorm}{A data set object with Alternatives X Criteria with normalized values}
+\item{AxCNorm}{A data set object with Alternatives X Criteria with
+normalized values}
 
-\item{vWeights}{Contains a set of user-assigned values to weight the criteria.
+\item{vWeights}{Contains a set of user-assigned values to weight the criteria
 The sum of these weights must add up to 1.
 The format of this input is an array of values.}
 }
 \value{
-A data frame object that contains 2 columns and the the same number of rows as
-       the input matrix. The columns "Points" has the calculated relative value of each
+A data frame object that contains 2 columns and the the same number
+of rows as
+       the input matrix. The columns "Points" has the calculated relative
+       value of each
        alternative whose id is in the "Alternatives" column.
 }
 \description{
-Calculates the ranking for the alternative's set according to WPM method
+Calculates the ranking for the alternative's set according to
+WPM method
 }
 \examples{
 

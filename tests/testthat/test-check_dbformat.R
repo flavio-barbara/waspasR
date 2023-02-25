@@ -41,7 +41,7 @@ test_that("checkInputFormat() checks AxC values.", {
   tempDB[4,2] <- "non convertible to numeric"
   DBOK <- checkInputFormat(tempDB)
   expect_equal(DBOK,
-               "Error: Check Aternatives x Criteria values, all must be numeric")
+              "Error: Check Aternatives x Criteria values, all must be numeric")
 })
 
 test_that("checkInputFormat() checks Parameter dfMatrix is missing.", {
@@ -50,7 +50,7 @@ test_that("checkInputFormat() checks Parameter dfMatrix is missing.", {
                "Parameter dfMatrix is missing")
 })
 
-test_that("checkInputFormat() checks Parameter dfMatrix must be a data.frame.", {
+test_that("checkInputFormat() checks Parameter dfMatrix must be a data.frame.",{
   DBOK <- checkInputFormat("something")
   expect_equal(DBOK,
                "Parameter dfMatrix must be a data.frame")

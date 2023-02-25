@@ -1,6 +1,7 @@
 #' @title checkInputFormat
 #'
-#' @description Verify if the database to be submitted to WASPAS is correctly formatted
+#' @description Verify if the database to be submitted to WASPAS is correctly
+#' formatted
 #'
 #' @param dfMatrix The original database to be validated in its format
 #'
@@ -18,7 +19,8 @@
 # Verify if a data.frame has the proper format to be the waspasR input database
 checkInputFormat <- function(dfMatrix){
   if (missing(dfMatrix)) return("Parameter dfMatrix is missing")
-  if (!is.data.frame(dfMatrix)) return("Parameter dfMatrix must be a data.frame")
+  if (!is.data.frame(dfMatrix))
+    return("Parameter dfMatrix must be a data.frame")
   tryCatch({
     # test flags, weights and criteria
     procStep <- "Flags-1"
@@ -26,7 +28,8 @@ checkInputFormat <- function(dfMatrix){
       flag <- toupper(substr(dfMatrix[iRow,1], 1, 1))
       if (!(flag %in% c("F","W","C"))) stop()
     }
-    # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
+    # Test flags contents, just strings initiated with B (Benefit) ou
+    #  C (Cost) are permitted
     flags <- sliceData(dfMatrix,"F")
     justBorC <- sort(unique(toupper(substr(flags,1,1))))
     procStep <- "Flags-2"
@@ -54,7 +57,7 @@ checkInputFormat <- function(dfMatrix){
   },
   finally = {
     if (procStep == "Flags-1"){
-      return("Error: Check the indicators in cells [1:3, 1], they must be 'C', 'F' or 'W'")
+      return("Error: Check the indicators in cells [1:3, 1], they must be 'C','F' or 'W'")
     }else if (procStep == "Flags-2"){
       return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")
     }else if (procStep == "Weights-1"){

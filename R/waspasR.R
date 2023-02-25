@@ -1,11 +1,11 @@
 #' @title waspasR()
 #'
 #' @description Runs the complete process from slicing the original database,
-#'    processing all the computational steps, like computing WSM and WPM formulas,
-#'    applying the lambda as proposed by the method WASPAS, and the building the
-#'    comp.ete output in a new data.frame with the criteria as column names,
-#'    all the original data and appending 3 new columns with the WSM, WPM and
-#'    WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
+#'    processing all the computational steps, like computing WSM and WPM
+#'    formulas, applying the lambda as proposed by the method WASPAS, and the
+#'    building the complete output in a new data.frame with the criteria as
+#'    column names, all the original data and appending 3 new columns with
+#'    the WSM, WPM and WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
 #'
 #' @param dfMatrix The original data set in a proper format. The format can be
 #'    checked by checkInputFormat() function.
@@ -45,11 +45,13 @@ waspasR <- function(dfMatrix, lambda) {
   # Apply lambda to get WASPAS
   waspas <- applyLambda(wsm, wpm, lambda)
   # Bind all the stuff
-  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1, ncol = ncol(dfMatrix)+3))
-  colnames(waspas_matrix) <- cbind("alternatives", criteria, "WSM_Rank","WPM_Rank","WASPAS_Rank")
-  waspas_matrix[1,1]="W"
+  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1
+                                     , ncol = ncol(dfMatrix)+3))
+  colnames(waspas_matrix) <- cbind("alternatives", criteria
+                                   , "WSM_Rank","WPM_Rank","WASPAS_Rank")
+  waspas_matrix[1,1] <- "W"
   waspas_matrix[1,1:ncol(weights)+1] <- weights
-  waspas_matrix[2,1]="F"
+  waspas_matrix[2,1] <- "F"
   waspas_matrix[2,1:ncol(flags)+1] <- flags
   waspas_matrix[3:nrow(waspas_matrix), 1] <- t(alternatives)
   waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values

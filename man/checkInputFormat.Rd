@@ -13,7 +13,8 @@ checkInputFormat(dfMatrix)
 True if everything is OK, an error message in case of bad format
 }
 \description{
-Verify if the database to be submitted to WASPAS is correctly formatted
+Verify if the database to be submitted to WASPAS is correctly
+formatted
 }
 \examples{
 

@@ -1,12 +1,14 @@
 #' @title normalize()
 #'
-#' @description Normalize the values of Alternatives X Criteria matrix according to a given
-#'              Cost-Benefit vector of flags.
-#' @param dfMatrix A data set object with Alternatives X Criteria  values to be normalized
-#' @param vCostBenefit A vector of flags that determines if the criterion is a Cost or Benefit one
-#'              Must be same size of Criteria, must contains just strings initiated with B, b, C or c
+#' @description Normalize the values of Alternatives X Criteria matrix
+#' according to a given Cost-Benefit vector of flags.
+#' @param dfMatrix A data set object with Alternatives X Criteria  values
+#' to be normalized
+#' @param vCostBenefit A vector of flags that determines if the criterion
+#' is a Cost or Benefit. Must be same size of Criteria, must contains
+#' just strings initiated with B, b, C or c
 #'
-#' @return A data frame object that contains the input matrix values normalized.
+#' @return A data frame object that contains the input matrix values normalized
 #'
 #' @examples
 #'
@@ -25,7 +27,8 @@ normalize <- function(dfMatrix, vCostBenefit) {
     if (length(vCostBenefit) != ncol(dfMatrix)) {
       return("Error: The cost-benefit flags array must be the same size as the number of criteria")
     }
-    # Test flags contents, just strings initiated with B (Benefit) ou C (Cost) are permitted
+    # Test flags contents, just strings initiated with 'B' (Benefit)
+    # or 'C' (Cost) are permitted
     justBorC <- sort(unique(toupper(substr(vCostBenefit,1,1))))
     if (!identical(justBorC, c("B","C"))) {
       return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b,c,B,C,Cost,Benefit,Ben etc.)")

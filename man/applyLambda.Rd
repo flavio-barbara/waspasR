@@ -21,8 +21,8 @@ A data frame object that contains the alternatives set scored by and
         using the input lambda.
 }
 \description{
-Apply the lambda to assign a relative importance to each of the previously
-             used methods (WSM and WPM). Lambda values range from zero to one.
+Apply the lambda to assign a relative importance to each of the
+  previously used methods (WSM and WPM). Lambda values range from zero to one
 }
 \examples{
 

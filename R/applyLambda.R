@@ -1,7 +1,7 @@
 #' @title applyLambda
 #'
-#' @description Apply the lambda to assign a relative importance to each of the previously
-#'              used methods (WSM and WPM). Lambda values range from zero to one.
+#' @description Apply the lambda to assign a relative importance to each of the
+#'   previously used methods (WSM and WPM). Lambda values range from zero to one
 #' @param WSM_matrix The data set object obtained from the application of the
 #' @param WPM_matrix The data set object obtained from the application of the
 #' @param lambda The lambda value (between 0 and 1)
@@ -32,11 +32,12 @@ applyLambda <- function(WSM_matrix, WPM_matrix, lambda) {
     }
     # Test WSM_matrix X WPM_matrix (size and contents)
     if (nrow(WSM_matrix) != nrow(WPM_matrix)) {
-      return("Error: WSM and WPM matrices entered must have same number of rows")
+      return("Error: WSM & WPM matrices entered must have same number of rows")
     }
     # WASPAS Ranking
     waspas_matrix <- cbind(WSM_matrix,WPM_matrix[,"Points"], WASPAS=0.0)
-    colnames(waspas_matrix) <- c("Alternative", "WSM_Rank","WPM_Rank","WASPAS_Rank")
+    colnames(waspas_matrix) <- c("Alternative"
+                                 , "WSM_Rank","WPM_Rank","WASPAS_Rank")
     waspas_matrix[,"WASPAS_Rank"] <-
           as.numeric(waspas_matrix[,"WSM_Rank"]) * lambda +
           as.numeric(waspas_matrix[,"WPM_Rank"]) * (1-lambda)
