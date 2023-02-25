@@ -7,24 +7,24 @@
 sliceData(dfMatrix, outData)
 }
 \arguments{
-\item{dfMatrix}{A matrix or data.frame in “all-in-one” format}
+\item{dfMatrix}{A matrix or data.frame in “all - in - one” format}
 
 \item{outData}{A flag to determine the vector or matrix (data.frame)
-to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria),
+to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria), 
 'F' (Flags), 'V' (Values) or 'W' (Weights)}
 }
 \value{
-A data.frame one-dimensional (vector) or two-dimensional (matrix)
+A data.frame one - dimensional (vector) or two - dimensional (matrix)
 with one of the Following objects:
- - if outData == "A": A vector of Alternatives
- - if outData == "C": A vector of Criteria
- - if outData == "F": A vector of Cost-Benefit Flags
- - if outData == "I": A vector containing the indicators in cells [1:3, 1]
- - if outData == "V": A matrix of values per Alternative x Criterion
- - if outData == "W": A vector of Weights
+ - if outData = =  "A": A vector of Alternatives
+ - if outData = =  "C": A vector of Criteria
+ - if outData = =  "F": A vector of Cost - Benefit Flags
+ - if outData = =  "I": A vector containing the indicators in cells [1:3, 1]
+ - if outData = =  "V": A matrix of values per Alternative x Criterion
+ - if outData = =  "W": A vector of Weights
 }
 \description{
-Slice a matrix or data.frame in “all-in-one” format into
+Slice a matrix or data.frame in “all - in - one” format into
 dedicated vectors/matrices as data.frame objects
 }
 \examples{

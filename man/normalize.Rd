@@ -19,7 +19,7 @@ A data frame object that contains the input matrix values normalized
 }
 \description{
 Normalize the values of Alternatives X Criteria matrix
-according to a given Cost-Benefit vector of flags.
+according to a given Cost - Benefit vector of flags.
 }
 \examples{
 

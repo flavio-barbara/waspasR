@@ -4,13 +4,13 @@
 \alias{calcWPM}
 \title{calcWPM}
 \usage{
-calcWPM(AxCNorm, vWeights)
+calcWPM(normalDb, vWeights)
 }
 \arguments{
-\item{AxCNorm}{A data set object with Alternatives X Criteria with
+\item{normalDb}{A data set object with Alternatives X Criteria with
 normalized values}
 
-\item{vWeights}{Contains a set of user-assigned values to weight the criteria
+\item{vWeights}{Contains a set of user - assigned values to weight the criteria
 The sum of these weights must add up to 1.
 The format of this input is an array of values.}
 }
@@ -29,6 +29,6 @@ WPM method
 
 \dontrun{
 calcWPM(normalized_matrix, vector_weights)
-wpm_matrix <- calcWPM(normalized_matrix, vector_weights)
+matrix_wpm <- calcWPM(normalized_matrix, vector_weights)
 }
 }

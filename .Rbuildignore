@@ -1,5 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^results$
-^cran-comments\.md$
+^cran - comments\.md$
 ^sketch\.R$

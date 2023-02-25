@@ -4,13 +4,13 @@
 \alias{calcWSM}
 \title{calcWSM}
 \usage{
-calcWSM(AxCNorm, vWeights)
+calcWSM(normalDb, vWeights)
 }
 \arguments{
-\item{AxCNorm}{A data set object with normalized values of
+\item{normalDb}{A data set object with normalized values of
 Alternatives X Criteria}
 
-\item{vWeights}{Contains a set of user-assigned values to weight
+\item{vWeights}{Contains a set of user - assigned values to weight
 the criteria.
                 The sum of these weights must add up to 1.
                 The format of this input is an array of values.}
@@ -28,6 +28,6 @@ WSM method.
 
 \dontrun{
 calcWSM(normalized_matrix, vector_weights)
-wpm_matrix <- calcWSM(normalized_matrix, vector_weights)
+matrix_wpm <- calcWSM(normalized_matrix, vector_weights)
 }
 }

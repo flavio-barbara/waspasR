@@ -4,12 +4,12 @@
 \alias{applyLambda}
 \title{applyLambda}
 \usage{
-applyLambda(WSM_matrix, WPM_matrix, lambda)
+applyLambda(matrix_wsm, matrix_wpm, lambda)
 }
 \arguments{
-\item{WSM_matrix}{The data set object obtained from the application of the}
+\item{matrix_wsm}{The data set object obtained from the application of the}
 
-\item{WPM_matrix}{The data set object obtained from the application of the}
+\item{matrix_wpm}{The data set object obtained from the application of the}
 
 \item{lambda}{The lambda value (between 0 and 1)}
 }
@@ -27,10 +27,10 @@ Apply the lambda to assign a relative importance to each of the
 \examples{
 
 \dontrun{
-applyLambda(WSM_matrix, WPM_matrix, lambda)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, lambda)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.5)
-waspas_rank <- applyLambda(WSM_matrix, WPM_matrix, 0.99)
+applyLambda(matrix_wsm, matrix_wpm, lambda)
+waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, lambda)
+waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)
+waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.5)
+waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.99)
 }
 }

@@ -21,6 +21,6 @@ formatted
 \dontrun{
 checkDF <- checkInputFormat(dfMatrix)
 checkInputFormat(dfMatrix)
-paste("My data.frame format:",checkInputFormat(dfMatrix))
+paste("My data.frame format:", checkInputFormat(dfMatrix))
 }
 }

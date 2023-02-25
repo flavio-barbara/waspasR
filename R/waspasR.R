@@ -5,7 +5,7 @@
 #'    formulas, applying the lambda as proposed by the method WASPAS, and the
 #'    building the complete output in a new data.frame with the criteria as
 #'    column names, all the original data and appending 3 new columns with
-#'    the WSM, WPM and WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
+#'    the WSM, WPM and WASPAS ranking ("WSM_Rank", "WPM_Rank", "WASPAS_Rank").
 #'
 #' @param dfMatrix The original data set in a proper format. The format can be
 #'    checked by checkInputFormat() function.
@@ -32,11 +32,11 @@ waspasR <- function(dfMatrix, lambda) {
   if (is.character(formatOK))
     return(formatOK)
   # Slice the raw data into specific objects
-  alternatives <- sliceData(dfMatrix,"A")
-  criteria <- sliceData(dfMatrix,"C")
-  weights <- sliceData(dfMatrix,"W")
-  flags <- sliceData(dfMatrix,"F")
-  values <- sliceData(dfMatrix,"V")
+  alternatives <- sliceData(dfMatrix, "A")
+  criteria <- sliceData(dfMatrix, "C")
+  weights <- sliceData(dfMatrix, "W")
+  flags <- sliceData(dfMatrix, "F")
+  values <- sliceData(dfMatrix, "V")
   # Normalize values
   normalized <- normalize(values, flags)
   # Run the methods calculations
@@ -45,18 +45,18 @@ waspasR <- function(dfMatrix, lambda) {
   # Apply lambda to get WASPAS
   waspas <- applyLambda(wsm, wpm, lambda)
   # Bind all the stuff
-  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix)-1
-                                     , ncol = ncol(dfMatrix)+3))
+  waspas_matrix <- data.frame(matrix(nrow = nrow(dfMatrix) - 1
+                                     , ncol = ncol(dfMatrix) + 3))
   colnames(waspas_matrix) <- cbind("alternatives", criteria
-                                   , "WSM_Rank","WPM_Rank","WASPAS_Rank")
-  waspas_matrix[1,1] <- "W"
-  waspas_matrix[1,1:ncol(weights)+1] <- weights
-  waspas_matrix[2,1] <- "F"
-  waspas_matrix[2,1:ncol(flags)+1] <- flags
+                                   , "WSM_Rank", "WPM_Rank", "WASPAS_Rank")
+  waspas_matrix[1, 1] <- "W"
+  waspas_matrix[1, 1:ncol(weights) + 1] <- weights
+  waspas_matrix[2, 1] <- "F"
+  waspas_matrix[2, 1:ncol(flags) + 1] <- flags
   waspas_matrix[3:nrow(waspas_matrix), 1] <- t(alternatives)
-  waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values)+1] <- values
-  waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[,"WSM_Rank"]
-  waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[,"WPM_Rank"]
-  waspas_matrix[3:nrow(waspas_matrix), "WASPAS_Rank"] <- waspas[,"WASPAS_Rank"]
+  waspas_matrix[3:nrow(waspas_matrix), 1:ncol(values) + 1] <- values
+  waspas_matrix[3:nrow(waspas_matrix), "WSM_Rank"] <- waspas[, "WSM_Rank"]
+  waspas_matrix[3:nrow(waspas_matrix), "WPM_Rank"] <- waspas[, "WPM_Rank"]
+  waspas_matrix[3:nrow(waspas_matrix), "WASPAS_Rank"] <- waspas[, "WASPAS_Rank"]
   return(as.data.frame(waspas_matrix))
 }

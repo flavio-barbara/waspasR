@@ -13,9 +13,9 @@ An object of class \code{"data.frame"}
  for making apurchase decision. These data are in the 3rd row, from col 2
  to the last.}
  \item{weights}{Arbitrated by the decision maker, they attribute different
-    relative importance to the values of the criteria in percentage terms,
+    relative importance to the values of the criteria in percentage terms, 
     thus making a weighting of these criteria.}
- \item{flags}{They determine whether the specific criterion is cost, that is,
+ \item{flags}{They determine whether the specific criterion is cost, that is, 
  the smaller, the better, or benefit, the greater the better.
  These data are in the 1st row, from col 2 to the last.}
  \item{values}{Randomly generated value, within a range that makes sense
@@ -29,7 +29,7 @@ data(choppers)
 A small database with real helicopter names and criteria that make sense.
 The values and weights are generated at random.
 The only requirement for the methods is that their sum be 1.
-The set of Cost-Benefit flags make no sense in terms of the criteria they
+The set of Cost - Benefit flags make no sense in terms of the criteria they
 refer to and are just a set of strings starting with the letter "C" (cost) or
 "B" (benefit). That is, a criterion that must be monotonic of benefit
 want to maximize it) can have a "c" flag, while a criterion that the (we user

@@ -17,12 +17,12 @@ A data.frame object that contains the input matrix with its values
    normalized. Or an error message if some bad data is entered.
 }
 \description{
-Runs the complete process from slicing the original database,
+Runs the complete process from slicing the original database, 
    processing all the computational steps, like computing WSM and WPM
    formulas, applying the lambda as proposed by the method WASPAS, and the
    building the complete output in a new data.frame with the criteria as
    column names, all the original data and appending 3 new columns with
-   the WSM, WPM and WASPAS ranking ("WSM_Rank","WPM_Rank","WASPAS_Rank").
+   the WSM, WPM and WASPAS ranking ("WSM_Rank", "WPM_Rank", "WASPAS_Rank").
 }
 \examples{
 
