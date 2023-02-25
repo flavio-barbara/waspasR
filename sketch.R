@@ -94,6 +94,7 @@ usethis::use_cran_comments()
 
 # add to .Rbuildignore
 usethis::use_build_ignore(c("results"))
+usethis::use_build_ignore(c("sketch.R"))
 
 # Checking for good practice
 library(goodpractice)
