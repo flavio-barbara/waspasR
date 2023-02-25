@@ -35,7 +35,7 @@ usethis::use_vignette("waspas-in-a-nutshell", "WASPAS in a nutshell")
 # Generate the test environment - rodar só 1 vez
 #usethis::use_testthat()
 
-# CRAN cheks
+# CRAN checks
 # # The following function runs a local R CMD check
 devtools::check()
 ######## ATENÇÃO!!! Demora devtools::check_rhub()
@@ -100,7 +100,7 @@ usethis::use_cran_comments()
 usethis::use_build_ignore(c("results"))
 usethis::use_build_ignore(c("sketch.R"))
 
-# Checking for good practice ######## ATENÇÃO!!! Demora...
+# Checking for good practice
 library(goodpractice)
 goodpractice::gp()
 # good practice II
@@ -109,7 +109,7 @@ remotes::install_github("jumpingrivers/inteRgrate")
 check_pkg() ###>>> Demora um pouco
 inteRgrate::check_lintr()
 inteRgrate::check_tidy_description()
-usethis::use_tidy_description()
+#usethis::use_tidy_description()
 inteRgrate::check_r_filenames()
 inteRgrate::check_gitignore()
 inteRgrate::check_version()
