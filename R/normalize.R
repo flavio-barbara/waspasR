@@ -2,9 +2,9 @@
 #'
 #' @description Normalize the values of Alternatives X Criteria matrix
 #' according to a given Cost - Benefit vector of flags.
-#' @param dfMatrix A data set object with Alternatives X Criteria  values
-#' to be normalized
-#' @param vCostBenefit A vector of flags that determines if the criterion
+#' @param normalized_matrix A data set object with Alternatives X Criteria
+#' values to be normalized
+#' @param vec_cost_benefit A vector of flags that determines if the criterion
 #' is a Cost or Benefit. Must be same size of Criteria, must contains
 #' just strings initiated with B, b, C or c
 #'
@@ -18,41 +18,49 @@
 #' }
 #' @export
 
-# Normalization: dfMatrix Matrix  = = >  normalDb Matrix
-normalize <- function(dfMatrix, vCostBenefit) {
+# Normalization: normalized_matrix Matrix into normalDb Matrix
+normalize <- function(normalized_matrix, vec_cost_benefit) {
   tryCatch({
-    # Test if dfMatrix has just numeric - alike variables
-    values <- sapply(dfMatrix, as.numeric)
+    # Test if normalized_matrix has just numeric-alike variables
+    sapply(normalized_matrix, as.numeric)
     # Test vector of flags X matrix of values dimentions
-    if (length(vCostBenefit) !=  ncol(dfMatrix)) {
-      return("Error: The cost - benefit flags array must be the same size as the number of criteria")
+    if (length(vec_cost_benefit) !=  ncol(normalized_matrix)) {
+      return(paste("Error: The cost - benefit flags array must be the same size"
+      , "as the number of criteria"))
     }
     # Test flags contents, just strings initiated with 'B' (Benefit)
     # or 'C' (Cost) are permitted
-    justBorC <- sort(unique(toupper(substr(vCostBenefit, 1, 1))))
-    if (!identical(justBorC, c("B", "C"))) {
-      return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b, c, B, C, Cost, Benefit, Ben etc.)")
+    just_bc <- sort(unique(toupper(substr(vec_cost_benefit, 1, 1))))
+    if (!identical(just_bc, c("B", "C"))) {
+      return(paste("Error: Vector of flags must contains just strings initiated"
+      , "with B or C (i.e. b, c, B, C, Cost, Benefit, Ben etc.)"))
     }
     # Normalization loop
-    flagsCxB <- toupper(substr(vCostBenefit, 1, 1))
-    for(iCol in 1:ncol(dfMatrix)) {
-      vAlternativeValues <- dfMatrix[1:nrow(dfMatrix), iCol]
-      vAlternativeValues <- sapply(vAlternativeValues, as.numeric)
-      maxv <- max(vAlternativeValues)
-      minv <- min(vAlternativeValues)
-      for(iRow in 1:nrow(dfMatrix)) {
-        if (flagsCxB[iCol] ==  "C") {  # Cost - Benefit = =  "C" (Cost)
-          dfMatrix[iRow, iCol] <- toString(minv / as.numeric(dfMatrix[iRow, iCol]))
-        } else {  # Cost - Benefit = =  "B" (Benefit)
-          dfMatrix[iRow, iCol] <- toString(as.numeric(dfMatrix[iRow, iCol]) / maxv)
+    total_rows <- nrow(normalized_matrix)
+    flags <- toupper(substr(vec_cost_benefit, 1, 1))
+    for (iCol in seq_len(ncol(normalized_matrix))) {
+      alternative_vals <- normalized_matrix[1:total_rows, iCol]
+      alternative_vals <- sapply(alternative_vals, as.numeric)
+      maxv <- max(alternative_vals)
+      minv <- min(alternative_vals)
+      for (iRow in seq_len(nrow(normalized_matrix))) {
+        if (flags[iCol] ==  "C") {  # Cost
+          normalized_matrix[iRow, iCol] <-
+            toString(minv / as.numeric(normalized_matrix[iRow, iCol]))
+        } else {  # Benefit
+          normalized_matrix[iRow, iCol] <-
+            toString(as.numeric(normalized_matrix[iRow, iCol]) / maxv)
         }
-      }}
-    return(as.data.frame(dfMatrix))  },
-  error = function(cond) {  stop(paste("E[N]", cond))
+      }
+    }
+    return(as.data.frame(normalized_matrix))
+    },
+  error = function(cond) {
+    stop(paste("E[N]", cond))
   },
   warning = function(cond) {
     if (grepl("NAs intro", cond)) {
-      return('W[N] Error: Some non numeric - alike value was found')
+      return("W[N] Error: Some non numeric-alike value was found")
     }
   })
 }

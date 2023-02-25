@@ -3,59 +3,60 @@
 #' @description Slice a matrix or data.frame in “all - in - one” format into
 #' dedicated vectors/matrices as data.frame objects
 #'
-#' @param dfMatrix A matrix or data.frame in “all - in - one” format
-#' @param outData A flag to determine the vector or matrix (data.frame)
+#' @param waspas_db A matrix or data.frame in “all - in - one” format
+#' @param output_obj A flag to determine the vector or matrix (data.frame)
 #' to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria),
 #' 'F' (Flags), 'V' (Values) or 'W' (Weights)
 #'
 #' @return A data.frame one - dimensional (vector) or two - dimensional (matrix)
 #' with one of the Following objects:
-#'  - if outData = =  "A": A vector of Alternatives
-#'  - if outData = =  "C": A vector of Criteria
-#'  - if outData = =  "F": A vector of Cost - Benefit Flags
-#'  - if outData = =  "I": A vector containing the indicators in cells [1:3, 1]
-#'  - if outData = =  "V": A matrix of values per Alternative x Criterion
-#'  - if outData = =  "W": A vector of Weights
+#'  - if output_obj == "A": A vector of Alternatives
+#'  - if output_obj == "C": A vector of Criteria
+#'  - if output_obj == "F": A vector of Cost - Benefit Flags
+#'  - if output_obj == "I": A vector containing the indicators in cells [1:3, 1]
+#'  - if output_obj == "V": A matrix of values per Alternative x Criterion
+#'  - if output_obj == "W": A vector of Weights
 #'
 #' @examples
 #'
 #' \dontrun{
-#' AlternativesList <- sliceData(dfMatrix, "A")
-#' CriteriaList <- sliceData(dfMatrix, "C")
-#' cost_benefit_Flags <- sliceData(dfMatrix, "F")
-#' values_matrix <- sliceData(dfMatrix, "M")
-#' vectorWeights <- sliceData(dfMatrix, "W")
+#' AlternativesList <- sliceData(waspas_db, "A")
+#' CriteriaList <- sliceData(waspas_db, "C")
+#' cost_benefit_Flags <- sliceData(waspas_db, "F")
+#' values_matrix <- sliceData(waspas_db, "M")
+#' vectorWeights <- sliceData(waspas_db, "W")
 #' }
 #' @export
 
 # Extract data from main data.frame
-sliceData <- function(dfMatrix, outData) {
+sliceData <- function(waspas_db, output_obj) {
   tryCatch({
     # extract vectors of flags, weights and criteria
-    outData <- toupper(substr(outData, 1, 1))
-    if (outData %in% c("C", "F", "W")) {
-      for(iRow in 1:3) {
-        if (dfMatrix[iRow, 1] ==  outData) {
-          return(dfMatrix[iRow, 2:ncol(dfMatrix)])
+    output_obj <- toupper(substr(output_obj, 1, 1))
+    if (output_obj %in% c("C", "F", "W")) {
+      for (iRow in 1:3) {
+        if (waspas_db[iRow, 1] ==  output_obj) {
+          return(waspas_db[iRow, 2:ncol(waspas_db)])
         }
       }
-    }else if (outData == "A") {
-      alternatives <- dfMatrix[4:nrow(dfMatrix), 1]
-      # Transpose the result to output in the same standard of the other extractions
-      altsVector <- as.data.frame(t(alternatives))
-      return(altsVector)
-      #return(as.data.frame(dfMatrix[4:nrow(dfMatrix), 1]))
-    }else if (outData == "V") {
-      return(dfMatrix[4:nrow(dfMatrix), 2:ncol(dfMatrix)])
-    }else if (outData == "I") {
-      indicators <- dfMatrix[1:3, 1]
+    } else if (output_obj == "A") {
+      alternatives <- waspas_db[4:nrow(waspas_db), 1]
       # Transpose the result to output in the same standard of the other slices
-      indsVector <- as.data.frame(t(indicators))
-      return(indsVector)
-    }else{
-      return("Error: The value of parameter [outData] must be 'A', 'C', 'F', 'I', 'V' or 'W', please reffer to help")
+      vec_alts <- as.data.frame(t(alternatives))
+      return(vec_alts)
+    } else if (output_obj == "V") {
+      return(waspas_db[4:nrow(waspas_db), 2:ncol(waspas_db)])
+    } else if (output_obj == "I") {
+      indicators <- waspas_db[1:3, 1]
+      # Transpose the result to output in the same standard of the other slices
+      vec_inds <- as.data.frame(t(indicators))
+      return(vec_inds)
+    } else {
+      return(paste("Error: The value of parameter [output_obj] must be"
+      , "'A', 'C', 'F', 'I', 'V' or 'W', please reffer to help"))
     }
   },
-  error = function(cond) {  stop(paste("E[SD]", cond))
+  error = function(cond) {
+    stop(paste("E[SD]", cond))
   })
 }

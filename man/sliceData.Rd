@@ -4,24 +4,24 @@
 \alias{sliceData}
 \title{sliceData}
 \usage{
-sliceData(dfMatrix, outData)
+sliceData(waspas_db, output_obj)
 }
 \arguments{
-\item{dfMatrix}{A matrix or data.frame in “all - in - one” format}
+\item{waspas_db}{A matrix or data.frame in “all - in - one” format}
 
-\item{outData}{A flag to determine the vector or matrix (data.frame)
-to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria), 
+\item{output_obj}{A flag to determine the vector or matrix (data.frame)
+to extract from the input matrix must be 'A' (Alternatives), 'C' (Criteria),
 'F' (Flags), 'V' (Values) or 'W' (Weights)}
 }
 \value{
 A data.frame one - dimensional (vector) or two - dimensional (matrix)
 with one of the Following objects:
- - if outData = =  "A": A vector of Alternatives
- - if outData = =  "C": A vector of Criteria
- - if outData = =  "F": A vector of Cost - Benefit Flags
- - if outData = =  "I": A vector containing the indicators in cells [1:3, 1]
- - if outData = =  "V": A matrix of values per Alternative x Criterion
- - if outData = =  "W": A vector of Weights
+ - if output_obj == "A": A vector of Alternatives
+ - if output_obj == "C": A vector of Criteria
+ - if output_obj == "F": A vector of Cost - Benefit Flags
+ - if output_obj == "I": A vector containing the indicators in cells [1:3, 1]
+ - if output_obj == "V": A matrix of values per Alternative x Criterion
+ - if output_obj == "W": A vector of Weights
 }
 \description{
 Slice a matrix or data.frame in “all - in - one” format into
@@ -30,10 +30,10 @@ dedicated vectors/matrices as data.frame objects
 \examples{
 
 \dontrun{
-AlternativesList <- sliceData(dfMatrix, "A")
-CriteriaList <- sliceData(dfMatrix, "C")
-cost_benefit_Flags <- sliceData(dfMatrix, "F")
-values_matrix <- sliceData(dfMatrix, "M")
-vectorWeights <- sliceData(dfMatrix, "W")
+AlternativesList <- sliceData(waspas_db, "A")
+CriteriaList <- sliceData(waspas_db, "C")
+cost_benefit_Flags <- sliceData(waspas_db, "F")
+values_matrix <- sliceData(waspas_db, "M")
+vectorWeights <- sliceData(waspas_db, "W")
 }
 }

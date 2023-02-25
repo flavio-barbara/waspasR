@@ -4,13 +4,13 @@
 \alias{normalize}
 \title{normalize()}
 \usage{
-normalize(dfMatrix, vCostBenefit)
+normalize(normalized_matrix, vec_cost_benefit)
 }
 \arguments{
-\item{dfMatrix}{A data set object with Alternatives X Criteria  values
-to be normalized}
+\item{normalized_matrix}{A data set object with Alternatives X Criteria
+values to be normalized}
 
-\item{vCostBenefit}{A vector of flags that determines if the criterion
+\item{vec_cost_benefit}{A vector of flags that determines if the criterion
 is a Cost or Benefit. Must be same size of Criteria, must contains
 just strings initiated with B, b, C or c}
 }

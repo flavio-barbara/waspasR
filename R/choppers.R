@@ -21,9 +21,9 @@
 #'  for making apurchase decision. These data are in the 3rd row, from col 2
 #'  to the last.}
 #'  \item{weights}{Arbitrated by the decision maker, they attribute different
-#'     relative importance to the values of the criteria in percentage terms, 
+#'     relative importance to the values of the criteria in percentage terms,
 #'     thus making a weighting of these criteria.}
-#'  \item{flags}{They determine whether the specific criterion is cost, that is, 
+#'  \item{flags}{They determine whether the specific criterion is cost, that is,
 #'  the smaller, the better, or benefit, the greater the better.
 #'  These data are in the 1st row, from col 2 to the last.}
 #'  \item{values}{Randomly generated value, within a range that makes sense

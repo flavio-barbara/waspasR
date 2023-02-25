@@ -3,51 +3,52 @@
 #' @description Verify if the database to be submitted to WASPAS is correctly
 #' formatted
 #'
-#' @param dfMatrix The original database to be validated in its format
+#' @param waspas_db The original database to be validated in its format
 #'
 #' @return True if everything is OK, an error message in case of bad format
 #'
 #' @examples
 #'
 #' \dontrun{
-#' checkDF <- checkInputFormat(dfMatrix)
-#' checkInputFormat(dfMatrix)
-#' paste("My data.frame format:", checkInputFormat(dfMatrix))
+#' checkDF <- checkInputFormat(waspas_db)
+#' checkInputFormat(waspas_db)
+#' paste("My data.frame format:", checkInputFormat(waspas_db))
 #' }
 #' @export
 
 # Verify if a data.frame has the proper format to be the waspasR input database
-checkInputFormat <- function(dfMatrix) {
-  if (missing(dfMatrix)) return("Parameter dfMatrix is missing")
-  if (!is.data.frame(dfMatrix))
-    return("Parameter dfMatrix must be a data.frame")
+checkInputFormat <- function(waspas_db) {
+  if (missing(waspas_db)) return("Parameter waspas_db is missing")
+  if (!is.data.frame(waspas_db))
+    return("Parameter waspas_db must be a data.frame")
   tryCatch({
     # test flags, weights and criteria
-    procStep <- "Flags - 1"
-    for(iRow in 1:3) {
-      flag <- toupper(substr(dfMatrix[iRow, 1], 1, 1))
+    proc_step <- "Flags - 1"
+    for (iRow in 1:3) {
+      flag <- toupper(substr(waspas_db[iRow, 1], 1, 1))
       if (!(flag %in% c("F", "W", "C"))) stop()
     }
     # Test flags contents, just strings initiated with B (Benefit) ou
     #  C (Cost) are permitted
-    flags <- sliceData(dfMatrix, "F")
-    justBorC <- sort(unique(toupper(substr(flags, 1, 1))))
-    procStep <- "Flags - 2"
-    if (!identical(justBorC, c("B", "C"))) stop()
+    flags <- sliceData(waspas_db, "F")
+    just_bc <- sort(unique(toupper(substr(flags, 1, 1))))
+    proc_step <- "Flags - 2"
+    if (!identical(just_bc, c("B", "C"))) stop()
     # Test Vector of Weights contents, it must summarize 1
-    procStep <- "Weights - 1"
-    weights <- sliceData(dfMatrix, "W")
+    proc_step <- "Weights - 1"
+    weights <- sliceData(waspas_db, "W")
     weights <- sapply(weights, as.numeric)
-    procStep <- "Weights - 2"
+    proc_step <- "Weights - 2"
     if (sum(weights) !=  1) stop()
-    # Test the values (if dfMatrix has just numeric - alike variables)
-    procStep <- "Values"
-    values <- sliceData(dfMatrix, "V")
+    # Test the values (if waspas_db has just numeric - alike variables)
+    proc_step <- "Values"
+    values <- sliceData(waspas_db, "V")
     values <- sapply(values, as.numeric)
-    procStep <- "End"
+    proc_step <- "End"
     # No return here due to use of "finally" # return(TRUE)
   },
-  error = function(cond) {  stop(paste("E[CI]", cond))
+  error = function(cond) {
+    stop(paste("E[CI]", cond))
   },
   warning = function(cond) {
     if (grepl("NAs intro", cond)) {
@@ -56,17 +57,19 @@ checkInputFormat <- function(dfMatrix) {
     }
   },
   finally = {
-    if (procStep ==  "Flags - 1") {
-      return("Error: Check the indicators in cells [1:3, 1], they must be 'C', 'F' or 'W'")
-    }else if (procStep ==  "Flags - 2") {
-      return("Error: Vector of flags must contains just strings initiated with B or C (i.e. b, c, B, C, Cost, Benefit, Ben etc.)")
-    }else if (procStep ==  "Weights - 1") {
+    if (proc_step ==  "Flags - 1") {
+      return(paste("Error: Check the indicators in cells [1:3, 1], they must be"
+                   , "'C', 'F' or 'W'"))
+    } else if (proc_step ==  "Flags - 2") {
+      return(paste("Error: Vector of flags must contains just strings initiated"
+      , "with B or C (i.e. b, c, B, C, Cost, Benefit, Ben etc.)"))
+    } else if (proc_step ==  "Weights - 1") {
       return("Error: Check Weights values, all must be numeric")
-    }else if (procStep ==  "Weights - 2") {
+    } else if (proc_step ==  "Weights - 2") {
       return("Error: Values in Vector of Weights must summarize 1")
-    }else if (procStep ==  "Values") {
+    } else if (proc_step ==  "Values") {
       return("Error: Check Aternatives x Criteria values, all must be numeric")
-    }else{
+    } else {
       return(TRUE)
     }
   })

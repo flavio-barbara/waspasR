@@ -4,22 +4,21 @@
 \alias{calcWPM}
 \title{calcWPM}
 \usage{
-calcWPM(normalDb, vWeights)
+calcWPM(normal_db, vec_weights)
 }
 \arguments{
-\item{normalDb}{A data set object with Alternatives X Criteria with
-normalized values}
+\item{normal_db}{A data set object with normalized values of
+Alternatives X Criteria}
 
-\item{vWeights}{Contains a set of user - assigned values to weight the criteria
+\item{vec_weights}{Contains a set of user assigned values to weight
+the criteria.
 The sum of these weights must add up to 1.
 The format of this input is an array of values.}
 }
 \value{
 A data frame object that contains 2 columns and the the same number
-of rows as
-       the input matrix. The columns "Points" has the calculated relative
-       value of each
-       alternative whose id is in the "Alternatives" column.
+of rows as the input matrix. The columns "points" has the calculated
+relative value of each alternative whose id is in the "alternatives" column
 }
 \description{
 Calculates the ranking for the alternative's set according to

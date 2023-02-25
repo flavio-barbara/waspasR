@@ -4,10 +4,10 @@
 \alias{waspasR}
 \title{waspasR()}
 \usage{
-waspasR(dfMatrix, lambda)
+waspasR(waspas_df, lambda)
 }
 \arguments{
-\item{dfMatrix}{The original data set in a proper format. The format can be
+\item{waspas_df}{The original data set in a proper format. The format can be
 checked by checkInputFormat() function.}
 
 \item{lambda}{The lambda value (between 0 and 1)}
@@ -17,7 +17,7 @@ A data.frame object that contains the input matrix with its values
    normalized. Or an error message if some bad data is entered.
 }
 \description{
-Runs the complete process from slicing the original database, 
+Runs the complete process from slicing the original database,
    processing all the computational steps, like computing WSM and WPM
    formulas, applying the lambda as proposed by the method WASPAS, and the
    building the complete output in a new data.frame with the criteria as

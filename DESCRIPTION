@@ -1,24 +1,30 @@
-Package: waspasR
 Type: Package
-Title: Tool Kit to Implement WASPAS Based Multi - Criteria Decision Analysis (MCDA) Solutions
+Package: waspasR
+Title: Tool Kit to Implement WASPAS Based Multi - Criteria Decision
+    Analysis (MCDA) Solutions
 Version: 0.1.0
-Authors@R: c(person("Barbara", "Flavio", email = "flavio.barbara@gmail.com", role = c("cre", "aut")), 
-             person("Santos", "Marcos", email = "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb"))
+Authors@R: c(
+    person("Barbara", "Flavio", , "flavio.barbara@gmail.com", role = c("cre", "aut")),
+    person("Santos", "Marcos", , "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb")
+  )
 Maintainer: Barbara Flavio <flavio.barbara@gmail.com>
-Description: Provides a set of functions to implement decision - making systems based on the WASPAS method.
-    Set data of Alternatives, valued according to Weighted Criteria common to the alternatives.
-    These values must be continuous numeric. Thus, the entries are: 
-    Alternatives, Criteria, Weight of each criterion and flags that indicate whether the criterion is 
-    monotonic cost or monotonic benefit.
-Depends: R (> =  4.2.0)
-License: GPL (> =  2)
+Description: Provides a set of functions to implement decision - making
+    systems based on the WASPAS method.  Set data of Alternatives, valued
+    according to Weighted Criteria common to the alternatives.  These
+    values must be continuous numeric. Thus, the entries are:
+    Alternatives, Criteria, Weight of each criterion and flags that
+    indicate whether the criterion is monotonic cost or monotonic benefit.
+License: GPL (>= 2)
+Depends: 
+    R (>= 4.2.0)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
-Language: en - US
+Language: en-US
 LazyData: true
 RoxygenNote: 7.2.3
-Suggests: 
-    knitr, 
-    rmarkdown, 
-    testthat (> =  3.0.0)
-VignetteBuilder: knitr
-Config/testthat/edition: 3

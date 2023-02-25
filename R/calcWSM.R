@@ -2,15 +2,16 @@
 #'
 #' @description Calculates the ranking for the alternative's set according to
 #' WSM method.
-#' @param normalDb A data set object with normalized values of
+#' @param normal_db A data set object with normalized values of
 #' Alternatives X Criteria
-#' @param vWeights Contains a set of user assigned values to weight the criteria
-#'                 The sum of these weights must add up to 1.
-#'                 The format of this input is an array of values.
+#' @param vec_weights Contains a set of user assigned values to weight
+#' the criteria.
+#' The sum of these weights must add up to 1.
+#' The format of this input is an array of values.
 #'
 #' @return A data frame object that contains 2 columns and the the same number
-#' of rows as the input matrix. The columns "Points" has the calculated
-#' relative value of each alternative whose id is in the "Alternatives" column
+#' of rows as the input matrix. The columns "points" has the calculated
+#' relative value of each alternative whose id is in the "alternatives" column
 #'
 #' @examples
 #'
@@ -20,33 +21,35 @@
 #' }
 #' @export
 
-# Ranking for WSM Method: normalDb Matrix  = = >  AxC_WSM Matrix
+# Ranking for WSM Method: normal_db Matrix into wsm Matrix
 
-calcWSM <- function(normalDb, vWeights) {
+calcWSM <- function(normal_db, vec_weights) {
   tryCatch({
-    # WSM Calculation loop
-    points <- rep(0, nrow(normalDb))
-    alternatives <- 1:nrow(normalDb)
-    AxC_WSM <- cbind(alternatives, points)
     # Test vector of Weights X matrix of values dimentions
-    if (length(vWeights) !=  ncol(normalDb)) {
-      return("Error: The weight vector must be the same size as the number of criteria")
+    if (length(vec_weights) !=  ncol(normal_db)) {
+      return(paste("Error: The weight vector must be the same size as the"
+      , "number of criteria"))
     }
     # Test Vector of Weights contents, it must summarize 1
-    if (sum(sapply(vWeights, as.numeric)) !=  1) {
+    if (sum(sapply(vec_weights, as.numeric)) !=  1) {
       return("Error: Values in Vector of Weights must summarize 1")
     }
-    for(iCol in 1:ncol(normalDb)) {
-      for(iRow in 1:nrow(normalDb)) {
-        normalDb[iRow, iCol] <- toString(as.numeric(normalDb[iRow, iCol])
-                                         * as.numeric(vWeights[iCol]))
-      }}
-    # calculate ranking
-    for(iRow in 1:nrow(normalDb)) {
-      AxC_WSM[iRow, "Points"] <- sum(sapply(normalDb[iRow, ], as.numeric))
+    # WSM Calculation loop
+    points <- rep(0, nrow(normal_db))
+    alternatives <- seq_len(nrow(normal_db))
+    wsm <- cbind(alternatives, points)
+    for (iCol in seq_len(ncol(normal_db))) {
+      for (iRow in seq_len(nrow(normal_db))) {
+        normal_db[iRow, iCol] <- toString(as.numeric(normal_db[iRow, iCol])
+                                          * as.numeric(vec_weights[iCol]))
+      }
     }
-    vWSM <- AxC_WSM[, c("Alternatives", "Points")]
-    return(vWSM)
+    # calculate ranking
+    for (iRow in seq_len(nrow(normal_db))) {
+      wsm[iRow, "points"] <- sum(sapply(normal_db[iRow, ], as.numeric))
+    }
+    wsm_db <- wsm[, c("alternatives", "points")]
+    return(wsm_db)
   },
   error = function(cond) {
     stop(paste("E[S]", cond))

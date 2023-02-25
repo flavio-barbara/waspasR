@@ -4,10 +4,10 @@
 \alias{checkInputFormat}
 \title{checkInputFormat}
 \usage{
-checkInputFormat(dfMatrix)
+checkInputFormat(waspas_db)
 }
 \arguments{
-\item{dfMatrix}{The original database to be validated in its format}
+\item{waspas_db}{The original database to be validated in its format}
 }
 \value{
 True if everything is OK, an error message in case of bad format
@@ -19,8 +19,8 @@ formatted
 \examples{
 
 \dontrun{
-checkDF <- checkInputFormat(dfMatrix)
-checkInputFormat(dfMatrix)
-paste("My data.frame format:", checkInputFormat(dfMatrix))
+checkDF <- checkInputFormat(waspas_db)
+checkInputFormat(waspas_db)
+paste("My data.frame format:", checkInputFormat(waspas_db))
 }
 }
