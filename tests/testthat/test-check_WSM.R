@@ -16,7 +16,7 @@ test_that("calcWSM() checks wrong dimensions...", {
                , wrong)
 })
 
-# Test Vector of Weights contents, it must summarize 1
+# Test Vector of Weights contents
 test_that("calcWSM() checks Vector of Weights... Not OK", {
   tempVec <- weightsVec
   tempVec[1,1] <- "1"
