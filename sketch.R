@@ -137,6 +137,9 @@ b <- b[order(b[, 2], decreasing = TRUE), ]
 head(b)
 # END of Test of functions ~~~~~~~~~~~~~~~~~~~~ END
 
+# SUBMISSAO AO CRAN
+devtools::release()
+
 #SANDBOX *~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 # library(readxl)
 # library(writexl)
