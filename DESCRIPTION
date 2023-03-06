@@ -3,10 +3,10 @@ Package: waspasR
 Title: Tool Kit to Implement a W.A.S.P.A.S. Based Multi-Criteria Decision Analysis Solution
 Version: 0.1.0
 Authors@R: c(
-    person("Barbara", "Flavio", , "flavio.barbara@gmail.com", role = c("cre", "aut")),
-    person("Santos", "Marcos", , "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb")
+    person("Flavio", "Barbara", , "flavio.barbara@gmail.com", role = c("cre", "aut")),
+    person("Marcos", "Santos", , "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb")
   )
-Maintainer: Barbara Flavio <flavio.barbara@gmail.com>
+Maintainer: Flavio Barbara <flavio.barbara@gmail.com>
 Description: Provides a set of functions to implement decision-making
     systems based on the W.A.S.P.A.S. method. So this package offers functions
     that analyze and validate the raw data, which must be entered in a determined
