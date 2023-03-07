@@ -17,7 +17,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' waspas_set <- waspasR(chopper, lambda = 0.23)
 #' waspas_set <- waspasR(myRawData, lambda = 0.8)
 #' }
@@ -54,11 +54,11 @@ waspasR <- function(waspas_df, lambda) {
   qtd_cols_flags <- ncol(flags) + 1
   qtd_cols_values <- ncol(values) + 1
   waspas_matrix[1, 1] <- "W"
-  waspas_matrix[1, 1:qtd_cols_weights] <- weights
+  waspas_matrix[1, 2:qtd_cols_weights] <- weights
   waspas_matrix[2, 1] <- "F"
-  waspas_matrix[2, 1:qtd_cols_flags] <- flags
+  waspas_matrix[2, 2:qtd_cols_flags] <- flags
   waspas_matrix[3:qtd_rows, 1] <- t(alternatives)
-  waspas_matrix[3:qtd_rows, 1:qtd_cols_values] <- values
+  waspas_matrix[3:qtd_rows, 2:qtd_cols_values] <- values
   waspas_matrix[3:qtd_rows, "WSM_Rank"] <- waspas[, "WSM_Rank"]
   waspas_matrix[3:qtd_rows, "WPM_Rank"] <- waspas[, "WPM_Rank"]
   waspas_matrix[3:qtd_rows, "WASPAS_Rank"] <- waspas[, "WASPAS_Rank"]

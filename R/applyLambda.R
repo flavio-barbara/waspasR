@@ -14,7 +14,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' applyLambda(matrix_wsm, matrix_wpm, lambda)
 #' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, lambda)
 #' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)

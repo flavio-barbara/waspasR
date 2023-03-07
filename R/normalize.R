@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' normalize(myMatrix, myCostBenefFlags)
 #' normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)
 #' }

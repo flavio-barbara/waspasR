@@ -15,7 +15,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' calcWSM(normalized_matrix, vector_weights)
 #' matrix_wpm <- calcWSM(normalized_matrix, vector_weights)
 #' }

@@ -9,7 +9,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' checkDF <- checkInputFormat(waspas_db)
 #' checkInputFormat(waspas_db)
 #' paste("My data.frame format:", checkInputFormat(waspas_db))

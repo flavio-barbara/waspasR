@@ -15,7 +15,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' calcWPM(normalized_matrix, vector_weights)
 #' matrix_wpm <- calcWPM(normalized_matrix, vector_weights)
 #' }
