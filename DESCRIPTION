@@ -7,9 +7,10 @@ Authors@R: c(
     person("Marcos", "Santos", , "marcosdossantos_doutorado_uff@yahoo.com.br", role = "ctb")
   )
 Maintainer: Flavio Barbara <flavio.barbara@gmail.com>
-Description: Provides a set of functions to implement decision-making
-    systems based on the W.A.S.P.A.S. method (Weighted Aggregated Sum Product
-    Assessment). So this package offers functions that analyze and validate the
+Description: Provides a set of functions to implement decision-making systems
+    based on the W.A.S.P.A.S. method (Weighted Aggregated Sum Product Assessment),
+    Chakraborty and Zavadskas (2014) <doi:10.15388/Informatica.2014.01>.
+    So this package offers functions that analyze and validate the
     raw data, which must be entered in a determined format;
     extract specific vectors and matrices from this raw database;
     normalize the input data; calculate rankings by intermediate methods;
