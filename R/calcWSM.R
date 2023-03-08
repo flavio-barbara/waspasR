@@ -10,8 +10,8 @@
 #' The format of this input is an array of values.
 #'
 #' @return A data frame object that contains 2 columns and the the same number
-#' of rows as the input matrix. The columns "points" has the calculated
-#' relative value of each alternative whose id is in the "alternatives" column
+#' of rows as the input matrix. The column "WSM_Rank" has the calculated
+#' relative value of each alternative whose id is in the "Alternative" column
 #'
 #' @examples
 #'
@@ -35,9 +35,9 @@ calcWSM <- function(normal_db, vec_weights) {
       return("Error: Values in Vector of Weights must summarize 1")
     }
     # WSM Calculation loop
-    points <- rep(0, nrow(normal_db))
-    alternatives <- seq_len(nrow(normal_db))
-    wsm <- cbind(alternatives, points)
+    WSM_Rank <- rep(0, nrow(normal_db))
+    Alternative <- seq_len(nrow(normal_db))
+    wsm <- cbind(Alternative, WSM_Rank)
     for (iCol in seq_len(ncol(normal_db))) {
       for (iRow in seq_len(nrow(normal_db))) {
         normal_db[iRow, iCol] <- toString(as.numeric(normal_db[iRow, iCol])
@@ -46,9 +46,9 @@ calcWSM <- function(normal_db, vec_weights) {
     }
     # calculate ranking
     for (iRow in seq_len(nrow(normal_db))) {
-      wsm[iRow, "points"] <- sum(sapply(normal_db[iRow, ], as.numeric))
+      wsm[iRow, "WSM_Rank"] <- sum(sapply(normal_db[iRow, ], as.numeric))
     }
-    wsm_db <- wsm[, c("alternatives", "points")]
+    wsm_db <- wsm[, c("Alternative", "WSM_Rank")]
     return(wsm_db)
   },
   error = function(cond) {

@@ -10,8 +10,8 @@
 #' The format of this input is an array of values.
 #'
 #' @return A data frame object that contains 2 columns and the the same number
-#' of rows as the input matrix. The columns "points" has the calculated
-#' relative value of each alternative whose id is in the "alternatives" column
+#' of rows as the input matrix. The columns "WPM_Rank" has the calculated
+#' relative value of each alternative whose id is in the "Alternative" column
 #'
 #' @examples
 #'
@@ -35,9 +35,9 @@ calcWPM <- function(normal_db, vec_weights) {
       return("Error: Values in Vector of Weights must summarize 1")
     }
     # WPM Calculation loop
-    points <- rep(0, nrow(normal_db))
-    alternatives <- seq_len(nrow(normal_db))
-    wpm <- cbind(alternatives, points)
+    WPM_Rank <- rep(0, nrow(normal_db))
+    Alternative <- seq_len(nrow(normal_db))
+    wpm <- cbind(Alternative, WPM_Rank)
     for (iCol in seq_len(ncol(normal_db))) {
       for (iRow in seq_len(nrow(normal_db))) {
         normal_db[iRow, iCol] <- toString(as.numeric(normal_db[iRow, iCol])
@@ -46,9 +46,9 @@ calcWPM <- function(normal_db, vec_weights) {
     }
     # calculate ranking
     for (iRow in seq_len(nrow(normal_db))) {
-      wpm[iRow, "points"] <- prod(sapply(normal_db[iRow, ], as.numeric))
+      wpm[iRow, "WPM_Rank"] <- prod(sapply(normal_db[iRow, ], as.numeric))
     }
-    wpm_db <- wpm[, c("alternatives", "points")]
+    wpm_db <- wpm[, c("Alternative", "WPM_Rank")]
     return(wpm_db)
   },
   error = function(cond) {
