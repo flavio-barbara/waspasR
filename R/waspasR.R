@@ -32,7 +32,7 @@ waspasR <- function(waspas_df, lambda) {
   if (is.character(format_ok))
     return(format_ok)
   # Slice the raw data into specific objects
-  alternatives <- sliceData(waspas_df, "A")
+  Alternative <- sliceData(waspas_df, "A")
   criteria <- sliceData(waspas_df, "C")
   weights <- sliceData(waspas_df, "W")
   flags <- sliceData(waspas_df, "F")
@@ -47,7 +47,7 @@ waspasR <- function(waspas_df, lambda) {
   # Bind all the stuff
   waspas_matrix <- data.frame(matrix(nrow = nrow(waspas_df) - 1
                                      , ncol = ncol(waspas_df) + 3))
-  colnames(waspas_matrix) <- cbind("alternatives", criteria
+  colnames(waspas_matrix) <- cbind("Alternative", criteria
                                    , "WSM_Rank", "WPM_Rank", "WASPAS_Rank")
   qtd_rows <- nrow(waspas_matrix)
   qtd_cols_weights <- ncol(weights) + 1
@@ -57,7 +57,7 @@ waspasR <- function(waspas_df, lambda) {
   waspas_matrix[1, 2:qtd_cols_weights] <- weights
   waspas_matrix[2, 1] <- "F"
   waspas_matrix[2, 2:qtd_cols_flags] <- flags
-  waspas_matrix[3:qtd_rows, 1] <- t(alternatives)
+  waspas_matrix[3:qtd_rows, 1] <- t(Alternative)
   waspas_matrix[3:qtd_rows, 2:qtd_cols_values] <- values
   waspas_matrix[3:qtd_rows, "WSM_Rank"] <- waspas[, "WSM_Rank"]
   waspas_matrix[3:qtd_rows, "WPM_Rank"] <- waspas[, "WPM_Rank"]
