@@ -35,7 +35,7 @@ applyLambda <- function(matrix_wsm, matrix_wpm, lambda) {
       return("Error: WSM & WPM matrices entered must have same number of rows")
     }
     # WASPAS Ranking
-    waspas_matrix <- cbind(matrix_wsm, matrix_wpm[, "points"], WASPAS = 0.0)
+    waspas_matrix <- cbind(matrix_wsm, matrix_wpm[, "WPM_Rank"], WASPAS = 0.0)
     colnames(waspas_matrix) <- c("Alternative"
                                  , "WSM_Rank", "WPM_Rank", "WASPAS_Rank")
     waspas_matrix[, "WASPAS_Rank"] <-

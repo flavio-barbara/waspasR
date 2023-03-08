@@ -29,7 +29,7 @@ dedicated vectors/matrices as data.frame objects
 }
 \examples{
 
-\dontrun{
+\donttest{
 AlternativesList <- sliceData(waspas_db, "A")
 CriteriaList <- sliceData(waspas_db, "C")
 cost_benefit_Flags <- sliceData(waspas_db, "F")

@@ -17,8 +17,8 @@ The format of this input is an array of values.}
 }
 \value{
 A data frame object that contains 2 columns and the the same number
-of rows as the input matrix. The columns "points" has the calculated
-relative value of each alternative whose id is in the "alternatives" column
+of rows as the input matrix. The columns "WPM_Rank" has the calculated
+relative value of each alternative whose id is in the "Alternative" column
 }
 \description{
 Calculates the ranking for the alternative's set according to
@@ -26,7 +26,7 @@ WPM method
 }
 \examples{
 
-\dontrun{
+\donttest{
 calcWPM(normalized_matrix, vector_weights)
 matrix_wpm <- calcWPM(normalized_matrix, vector_weights)
 }

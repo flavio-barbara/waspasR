@@ -23,7 +23,7 @@ according to a given Cost - Benefit vector of flags.
 }
 \examples{
 
-\dontrun{
+\donttest{
 normalize(myMatrix, myCostBenefFlags)
 normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)
 }

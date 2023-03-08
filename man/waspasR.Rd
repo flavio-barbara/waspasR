@@ -26,7 +26,7 @@ Runs the complete process from slicing the original database,
 }
 \examples{
 
-\dontrun{
+\donttest{
 waspas_set <- waspasR(chopper, lambda = 0.23)
 waspas_set <- waspasR(myRawData, lambda = 0.8)
 }

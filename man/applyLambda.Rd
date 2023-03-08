@@ -26,7 +26,7 @@ Apply the lambda to assign a relative importance to each of the
 }
 \examples{
 
-\dontrun{
+\donttest{
 applyLambda(matrix_wsm, matrix_wpm, lambda)
 waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, lambda)
 waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)
