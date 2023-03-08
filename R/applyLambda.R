@@ -3,7 +3,9 @@
 #' @description Apply the lambda to assign a relative importance to each of the
 #'   previously used methods (WSM and WPM). Lambda values range from zero to one
 #' @param matrix_wsm The data set object obtained from the application of the
+#'   calcWSM function
 #' @param matrix_wpm The data set object obtained from the application of the
+#'   calcWPM function
 #' @param lambda The lambda value (between 0 and 1)
 #'
 #' @return A data frame object that contains the alternatives set scored by and
