@@ -17,8 +17,8 @@ test_that("waspasR() check wrong input.", {
 # Test WASPAS Ranking
 test_that("waspasR() check output values.", {
   waspas_test <- waspasR(choppers, lambda = 0.5)
-  expect_equal(nrow(choppers), nrow(waspas_test) + 1)
-  expect_equal(ncol(choppers), ncol(waspas_test) - 3)
+  expect_equal(round(max(waspas_test$WASPAS_Rank, na.rm=TRUE), 3), 0.617)
+  expect_equal(round(min(waspas_test$WASPAS_Rank, na.rm=TRUE),3), 0.433)
 })
 
 # Covers tryCatch Errors
