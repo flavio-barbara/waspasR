@@ -5,3 +5,4 @@
 ^sketch\.R$
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
+^NEWS\.md$

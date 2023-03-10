@@ -7,9 +7,11 @@
 applyLambda(matrix_wsm, matrix_wpm, lambda)
 }
 \arguments{
-\item{matrix_wsm}{The data set object obtained from the application of the}
+\item{matrix_wsm}{The data set object obtained from the application of the
+calcWSM function}
 
-\item{matrix_wpm}{The data set object obtained from the application of the}
+\item{matrix_wpm}{The data set object obtained from the application of the
+calcWPM function}
 
 \item{lambda}{The lambda value (between 0 and 1)}
 }
@@ -27,8 +29,7 @@ Apply the lambda to assign a relative importance to each of the
 \examples{
 
 \donttest{
-applyLambda(matrix_wsm, matrix_wpm, lambda)
-waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, lambda)
+waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.001)
 waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)
 waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.5)
 waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.99)

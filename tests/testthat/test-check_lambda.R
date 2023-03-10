@@ -53,5 +53,5 @@ test_that("applyLambda() check output values.", {
 
 # Covers tryCatch Errors
 test_that("applyLambda() checks Error.", {
-  expect_error(applyLambda())
+  expect_error(applyLambda(x,y,0))
 })
