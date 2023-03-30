@@ -16,11 +16,3 @@ True if everything is OK, an error message in case of bad format
 Verify if the database to be submitted to WASPAS is correctly
 formatted
 }
-\examples{
-
-\donttest{
-checkDF <- checkInputFormat(waspas_db)
-checkInputFormat(waspas_db)
-paste("My data.frame format:", checkInputFormat(waspas_db))
-}
-}

@@ -15,12 +15,6 @@
 #' @return A data.frame object that contains the input matrix with its values
 #'    normalized. Or an error message if some bad data is entered.
 #'
-#' @examples
-#'
-#' \donttest{
-#' waspas_set <- waspasR(chopper, lambda = 0.23)
-#' waspas_set <- waspasR(myRawData, lambda = 0.8)
-#' }
 #' @export
 
 # Putting everything togheter

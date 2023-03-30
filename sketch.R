@@ -10,18 +10,7 @@ library(devtools) # Tools to Make Developing R Packages Easier
 library(testthat) # Unit Testing for R
 library(usethis)  # Automate Package and Project Setup
 
-
-# Check for CRAN specific requirements using rhub and save it in the results objects
-results <- rhub::check_for_cran()
-
-# Get the summary of your results
-results$cran_summary()
-
-# Generate your cran-comments.md, then you copy-paste the output from the function above
-usethis::use_cran_comments()
-
-
-############ SUBMISSION TO CRAN
+############ SUBMISSION TO CRAN via devtools
 
 devtools::release()
 # perguntas:
@@ -62,11 +51,8 @@ goodpractice::gp()
 inteRgrate::check_pkg()
 inteRgrate::check_lintr()
 inteRgrate::check_tidy_description()
-inteRgrate::check_version() # <-- verifica se deu commit no GitHub
-
 
 # GIT Stuff - to run in Terminal tab
-
 # git remote add origin https://github.com/flavio-barbara/waspasR.git
 # (add all to commit)
 # git add *
@@ -120,7 +106,7 @@ Sys.getenv("PATH")
 Sys.setenv(PATH=paste(Sys.getenv("PATH"),"C:/Users/flavi/AppData/Local/Programs/MiKTeX/miktex/bin/x64",sep=";"))
 
 # add to .Rbuildignore
-usethis::use_build_ignore(c("results"))
+usethis::use_build_ignore(c("sketch.R"))
 usethis::use_build_ignore(c("NEWS.md"))
 
 # Checking for good practice

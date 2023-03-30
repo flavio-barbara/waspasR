@@ -24,10 +24,3 @@ relative value of each alternative whose id is in the "Alternative" column
 Calculates the ranking for the alternative's set according to
 WPM method
 }
-\examples{
-
-\donttest{
-calcWPM(normalized_matrix, vector_weights)
-matrix_wpm <- calcWPM(normalized_matrix, vector_weights)
-}
-}

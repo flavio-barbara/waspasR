@@ -24,10 +24,3 @@ relative value of each alternative whose id is in the "Alternative" column
 Calculates the ranking for the alternative's set according to
 WSM method.
 }
-\examples{
-
-\donttest{
-calcWSM(normalized_matrix, vector_weights)
-matrix_wpm <- calcWSM(normalized_matrix, vector_weights)
-}
-}

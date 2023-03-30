@@ -7,13 +7,6 @@
 #'
 #' @return True if everything is OK, an error message in case of bad format
 #'
-#' @examples
-#'
-#' \donttest{
-#' checkDF <- checkInputFormat(waspas_db)
-#' checkInputFormat(waspas_db)
-#' paste("My data.frame format:", checkInputFormat(waspas_db))
-#' }
 #' @export
 
 # Verify if a data.frame has the proper format to be the waspasR input database
@@ -46,8 +39,7 @@ checkInputFormat <- function(waspas_db) {
     proc_step <- "Values"
     values <- sliceData(waspas_db, "V")
     values <- sapply(values, as.numeric)
-    if (sum(is.na(values)) > 0)
-    stop()
+    if (sum(is.na(values)) > 0) stop()
     proc_step <- "End"
     # No return here due to use of "finally" # return(TRUE)
   },

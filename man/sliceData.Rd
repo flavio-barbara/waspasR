@@ -27,13 +27,3 @@ with one of the Following objects:
 Slice a matrix or data.frame in “all - in - one” format into
 dedicated vectors/matrices as data.frame objects
 }
-\examples{
-
-\donttest{
-AlternativesList <- sliceData(waspas_db, "A")
-CriteriaList <- sliceData(waspas_db, "C")
-cost_benefit_Flags <- sliceData(waspas_db, "F")
-values_matrix <- sliceData(waspas_db, "M")
-vectorWeights <- sliceData(waspas_db, "W")
-}
-}

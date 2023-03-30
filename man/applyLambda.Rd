@@ -26,12 +26,3 @@ A data frame object that contains the alternatives set scored by and
 Apply the lambda to assign a relative importance to each of the
   previously used methods (WSM and WPM). Lambda values range from zero to one
 }
-\examples{
-
-\donttest{
-waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.001)
-waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)
-waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.5)
-waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.99)
-}
-}

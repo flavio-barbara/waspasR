@@ -13,12 +13,6 @@
 #' of rows as the input matrix. The column "WSM_Rank" has the calculated
 #' relative value of each alternative whose id is in the "Alternative" column
 #'
-#' @examples
-#'
-#' \donttest{
-#' calcWSM(normalized_matrix, vector_weights)
-#' matrix_wpm <- calcWSM(normalized_matrix, vector_weights)
-#' }
 #' @export
 
 # Ranking for WSM Method: normal_db Matrix into wsm Matrix

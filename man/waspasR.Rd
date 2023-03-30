@@ -24,10 +24,3 @@ Runs the complete process from slicing the original database,
    column names, all the original data and appending 3 new columns with
    the WSM, WPM and WASPAS ranking ("WSM_Rank", "WPM_Rank", "WASPAS_Rank").
 }
-\examples{
-
-\donttest{
-waspas_set <- waspasR(chopper, lambda = 0.23)
-waspas_set <- waspasR(myRawData, lambda = 0.8)
-}
-}

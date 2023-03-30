@@ -17,15 +17,6 @@
 #'  - if output_obj == "V": A matrix of values per Alternative x Criterion
 #'  - if output_obj == "W": A vector of Weights
 #'
-#' @examples
-#'
-#' \donttest{
-#' AlternativesList <- sliceData(waspas_db, "A")
-#' CriteriaList <- sliceData(waspas_db, "C")
-#' cost_benefit_Flags <- sliceData(waspas_db, "F")
-#' values_matrix <- sliceData(waspas_db, "M")
-#' vectorWeights <- sliceData(waspas_db, "W")
-#' }
 #' @export
 
 # Extract data from main data.frame

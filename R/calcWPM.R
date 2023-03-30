@@ -13,12 +13,6 @@
 #' of rows as the input matrix. The columns "WPM_Rank" has the calculated
 #' relative value of each alternative whose id is in the "Alternative" column
 #'
-#' @examples
-#'
-#' \donttest{
-#' calcWPM(normalized_matrix, vector_weights)
-#' matrix_wpm <- calcWPM(normalized_matrix, vector_weights)
-#' }
 #' @export
 
 # Ranking for WPM Method: normal_db Matrix into wpm Matrix

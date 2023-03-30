@@ -21,10 +21,3 @@ A data frame object that contains the input matrix values normalized
 Normalize the values of Alternatives X Criteria matrix
 according to a given Cost - Benefit vector of flags.
 }
-\examples{
-
-\donttest{
-normalize(myMatrix, myCostBenefFlags)
-normalized_matrix <- normalize(row_values_matrix, flags_CostBenefit)
-}
-}

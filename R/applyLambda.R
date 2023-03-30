@@ -14,14 +14,6 @@
 #'         proposed by the WASPAS method
 #'         using the input lambda.
 #'
-#' @examples
-#'
-#' \donttest{
-#' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.001)
-#' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0)
-#' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.5)
-#' waspas_rank <- applyLambda(matrix_wsm, matrix_wpm, 0.99)
-#' }
 #' @export
 
 # Determines relative values according to the WASPAS method
