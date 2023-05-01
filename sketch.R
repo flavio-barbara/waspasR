@@ -19,7 +19,6 @@ devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = FALSE)
 #Have you run `R CMD check` locally?
 devtools::check()
 #Were devtool's checks successful?
-# - ### demoraaaa!!! ###
 results <- rhub::check_for_cran()
 # Get the summary of your results
 results$cran_summary()
@@ -76,16 +75,16 @@ devtools::document(pkg = ".", roclets = NULL, quiet = FALSE)
 # vignette
 usethis::use_vignette("waspas-in-a-nutshell", "WASPAS in a nutshell")
 
+############ TESTS
 # Generate the test environment
 usethis::use_testthat()
-
-install.packages("pkgdown")
 
 # Run all tests - development
 .rs.restartR()
 devtools::test()
 
 # If an error occurs run detach command first, then test_coverage
+install.packages("pkgdown")
 detach("package:waspasR", unload = TRUE)
 devtools::test_coverage()
 
@@ -106,8 +105,7 @@ Sys.getenv("PATH")
 Sys.setenv(PATH=paste(Sys.getenv("PATH"),"C:/Users/flavi/AppData/Local/Programs/MiKTeX/miktex/bin/x64",sep=";"))
 
 # add to .Rbuildignore
-usethis::use_build_ignore(c("sketch.R"))
-usethis::use_build_ignore(c("NEWS.md"))
+usethis::use_build_ignore(c("sketch.R","NEWS.md"))
 
 # Checking for good practice
 library(goodpractice)
@@ -116,8 +114,7 @@ goodpractice::gp()
 library(covr) # Test Coverage for Packages
 covr::codecov(token = "311e9d7d-874b-4718-90c9-d81f11c898ac")
 
-
-# Debug of functions ~~~~~~~~~~~~~~~~~~~~
+############ Debug of functions
 .rs.restartR()
 detach("package:waspasR", unload = TRUE)
 install.packages('C:/Users/flavi/waspasR_0.1.0.tar.gz', repos=NULL, type='source')
@@ -130,8 +127,7 @@ errordb[4,2] <- NA
 values <- sliceData(errordb,"V")
 sapply(values, function(x) sum(is.na(x)))
 sum(is.na(values))
-x<-checkInputFormat(errordb)
-
+x <- checkInputFormat(errordb)
 
 alternatives <- sliceData(choppers,"A")
 criteria <- sliceData(choppers,"C")
@@ -142,7 +138,7 @@ norm_matrix <- normalize(values,flags)
 wsm <- calcWSM(norm_matrix, weights)
 wpm <- calcWPM(norm_matrix, weights)
 mywaspas <- applyLambda(wsm,wpm,lambda=0.5)
-# Complete Test ~~~~~~~~~~~~~~~~~~~~
+# Complete Test
 a <- waspasR(choppers, 0.23)
 b <- a[3:nrow(a), c("alternatives","WASPAS_Rank")]
 b <- b[order(b[, 2], decreasing=TRUE), ]
@@ -166,4 +162,4 @@ head(b)
 # choppers <- readRDS("data/waspas_choppers.RData")
 # choppers[1,1] <- ifelse(choppers[1,1] == "Flavio", "F", "Flavio")
 # saveRDS(choppers, file = "data/waspas_choppers.RData")
-Sys.time()
+# Sys.time()

@@ -7,3 +7,8 @@
 -   A much better vignette was build.
 
 -   Improvements in the way the function checkInputFormat validates the inputted data.
+
+
+## Changes in version 0.1.2
+
+-   This News.md file was added to the package
