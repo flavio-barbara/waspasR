@@ -72,7 +72,7 @@ By substituting the weighted sum (WSM) and weighted product (WPM) formulas, we a
 ![Formula 07](inst/images/formula07.jpg)
 *<sub>where IRTi is the total relative importance of alternative i, obtained through the WASPAS method, is calculated using the formula above, where the lambda factor multiplies the sum indicated in equation (4), and its complement (1-λ) multiplies the product indicated in equation (5).</sub>*
 
-#Computational tools
+# Tools used to build this package
 
 
 The R language serves as the foundation for all the development in this work.
