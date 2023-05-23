@@ -28,7 +28,7 @@ The first step involves constructing the Decision Matrix, as MCDM problems are d
 Consequently, an m-by-n matrix is created, containing known values of the n criteria for each of the m alternatives, as illustrated in equation (1).
 
 ![Formula 01](inst/images/formula01.jpg)
-*where, X: is the algebraic matrix formed by the values of the set of criteria associated with each of the alternatives under analysis in the study of the MCDM problem; and Xmn is the value of a specific criterion (n) for a specific alternative (m).*
+*<sub>where, X: is the algebraic matrix formed by the values of the set of criteria associated with each of the alternatives under analysis in the study of the MCDM problem; and Xmn is the value of a specific criterion (n) for a specific alternative (m).</sub>*
 
 The second step of the WASPAS method involves normalizing the values in the decision matrix to overcome the issue of highly disparate criteria.
 Different normalization formulas are used for monotonic cost or benefit criteria, depending on whether higher or lower values are preferred.
