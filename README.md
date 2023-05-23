@@ -37,7 +37,7 @@ The performance values of each alternative with respect to each criterion are no
 This is done for each monotonic benefit criterion and is represented by equation (2).
 
 ![Formula 02](inst/images/formula02.jpg)
-*where, Xij: represents the normalized value for a specific tuple (alternative, criterion); Xij is the original value that needs to be normalized; maxi(Xij) denotes the largest value within the set of values for a specific monotonic benefit criterion across all alternatives.*
+*<sub>where, Xij: represents the normalized value for a specific tuple (alternative, criterion); Xij is the original value that needs to be normalized; maxi(Xij) denotes the largest value within the set of values for a specific monotonic benefit criterion across all alternatives.</sub>*
 
 For monotonic cost criteria, the vector of performance values associated with the specific criterion is normalized by dividing each value obtained for the criterion by the smallest value within the set of values.
 In this case, the normalization of the alternatives' performance values with respect to the criterion involves applying a function to the vector of values Xij for the jth criterion.
@@ -45,19 +45,19 @@ This function divides the minimum value of the criterion's value vector by the v
 The formula for this normalization process is represented below:
 
 ![Formula 03](inst/images/formula03.jpg)
-*where, Xij: is the normalized value for a specific tuple (alternative, criterion); Xij is the original value to be normalized; mini(Xij) represents the smallest value within the set of values for a specific monotonic cost criterion across all alternatives, the index i ranges from 1 to m, representing the number of alternatives.*
+*<sub>where, Xij: is the normalized value for a specific tuple (alternative, criterion); Xij is the original value to be normalized; mini(Xij) represents the smallest value within the set of values for a specific monotonic cost criterion across all alternatives, the index i ranges from 1 to m, representing the number of alternatives.</sub>*
 
 The WSM and WPM methods differ in determining the best alternatives based on the weighting function, while both assign weights to criteria based on their relative importance determined by the decision maker.
 The goal of MCDM methods is to produce a ranked list of alternatives that represents their relative importance.
 In the WSM method, the relative importance value for each alternative is obtained by summing the normalized values of the set of criteria assigned to that alternative, denoted by IRi and Wj respectively, see equation (4):
 
 ![Formula 04](inst/images/formula04.jpg)
-*where, IRi: is the relative importance of alternative i obtained by the sum of normalized values Xij weighted by the arbitrated weight of criterion j Wj with j ranging from 1 to n, where n is the number of criteria in the problem.*
+*<sub>where, IRi: is the relative importance of alternative i obtained by the sum of normalized values Xij weighted by the arbitrated weight of criterion j Wj with j ranging from 1 to n, where n is the number of criteria in the problem.</sub>*
 
 In the WPM method, normalized values of the criteria are raised to the power of the weight assigned to the relative importance of the jth criterion, as shown in the weights vector, represented by equation (5):
 
 ![Formula 05](inst/images/formula05.jpg)
-*where, IRi: is the relative importance of alternative i obtained by the product of the normalized values Xij raised to the arbitrated weight of the criterion j Wj with j ranging from 1 to n, where n is the number of criteria in the problem.*
+*<sub>where, IRi: is the relative importance of alternative i obtained by the product of the normalized values Xij raised to the arbitrated weight of the criterion j Wj with j ranging from 1 to n, where n is the number of criteria in the problem.</sub>*
 
 The WASPAS method combines the relative importance of the WSM and WPM methods by introducing a lambda parameter between 0 and 1.
 This parameter is used to determine the Total Relative Importance by combining the weighted relative importance of WSM and WPM.
@@ -65,12 +65,12 @@ The total relative importance is calculated as the sum of lambda multiplied by t
 The lambda value determines the emphasis placed on the WSM and WPM relative importance, with a value of 1 emphasizing WSM and a value of 0 emphasizing WPM.
 
 ![Formula 06](inst/images/formula06.jpg)
-*where IRTi is the total relative importance of alternative i, obtained by the WASPAS method; IRi(WSM) is its relative importance obtained by the WSM method and IRi(WPM) is its relative importance obtained by the WPM method; λ (Lambda) is a value ranging from 0 to 1.*
+*<sub>where IRTi is the total relative importance of alternative i, obtained by the WASPAS method; IRi(WSM) is its relative importance obtained by the WSM method and IRi(WPM) is its relative importance obtained by the WPM method; λ (Lambda) is a value ranging from 0 to 1.</sub>*
 
 By substituting the weighted sum (WSM) and weighted product (WPM) formulas, we arrive at equation (7), which is commonly encountered in relevant technical literature:
 
 ![Formula 07](inst/images/formula07.jpg)
-*where IRTi is the total relative importance of alternative i, obtained through the WASPAS method, is calculated using the formula above, where the lambda factor multiplies the sum indicated in equation (4), and its complement (1-λ) multiplies the product indicated in equation (5).*
+*<sub>where IRTi is the total relative importance of alternative i, obtained through the WASPAS method, is calculated using the formula above, where the lambda factor multiplies the sum indicated in equation (4), and its complement (1-λ) multiplies the product indicated in equation (5).</sub>*
 
 #Computational tools
 
