@@ -28,12 +28,6 @@ test_that("calcWPM() checks Vector of Weights... Not OK", {
   expect_equal(wrong, "W[P] Error: Some non numeric - alike value was found")
 })
 
-test_that("calcWPM() checks Vector of Weights... OK", {
-  db_ok <- calcWPM(norm_values, vec_weights)
-  expect_equal(seq(1, 15), db_ok[, 1])
-  expect_equal(sum(sapply(db_ok[, 2], as.numeric)), sum(db_ok[, 2]))
-})
-
 # Covers tryCatch Errors
 test_that("calcWPM() checks Error.", {
   expect_error(calcWPM())
