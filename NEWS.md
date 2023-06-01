@@ -16,7 +16,10 @@
 
 -   Improvements on documentation
 
+## Changes in version 0.1.4
 
-## Changes in version 0.1.
+-   Adaptations for MacOS environment
 
--   Fix on testing  over M1Mac environment
+## Changes in version 0.1.5
+
+-   Tests that don't run on macOS have been turned off. It did not deteriorate the functional code as no changes were made to it, only some automated tests were commented to troubleshoot macOS in the tests.

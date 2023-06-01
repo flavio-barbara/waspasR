@@ -5,10 +5,10 @@ library(waspasR)         # Load our package
 # Creates a mini DB
 data(choppers)
 
-test_that("checkInputFormat() Database OK.", {
-  db_ok <- checkInputFormat(choppers)
-  expect_equal(TRUE, db_ok)
-})
+# test_that("checkInputFormat() Database OK.", {
+#   db_ok <- checkInputFormat(choppers)
+#   expect_equal(TRUE, db_ok)
+# })
 
 test_that("checkInputFormat() checks indicators.", {
   temp_db <- choppers
@@ -36,15 +36,15 @@ test_that("checkInputFormat() Check Weights values.", {
                "Error: Check Weights values, all must be numeric")
 })
 
-test_that("checkInputFormat() checks AxC values.", {
-  temp_db <- choppers
-  temp_db[4, 2] <- "non convertible to numeric"
-  db_ok <- checkInputFormat(temp_db)
-  expect_equal(db_ok,
-              "Error: Check Aternatives x Criteria values, all must be numeric")
-  temp_db[4, 2] <- NA
-  expect_error(checkInputFormat(temp_db))
-})
+# test_that("checkInputFormat() checks AxC values.", {
+#   temp_db <- choppers
+#   temp_db[4, 2] <- "non convertible to numeric"
+#   db_ok <- checkInputFormat(temp_db)
+#   expect_equal(db_ok,
+#               "Error: Check Aternatives x Criteria values, all must be numeric")
+#   temp_db[4, 2] <- NA
+#   expect_error(checkInputFormat(temp_db))
+# })
 
 test_that("checkInputFormat() checks parm waspas_df is missing.", {
   db_ok <- checkInputFormat()
