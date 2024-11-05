@@ -1,3 +1,8 @@
+# TO DO
+    The code below must be inserted in Weighted Product Model (WPM) method program to avoid the problem of user input zeroes in the normal_db data set. Specifically, the problem arises because raising zero to any power results in zero, and the product of any number with zero is zero. This means that if any element in the normal_db is zero, the entire product for that row will be zero, which may not be the desired behavior.
+    
+    # Replace zeroes with a very small positive number
+    normal_db[normal_db == 0] <- 1e-10
     
 # Introduction
 
